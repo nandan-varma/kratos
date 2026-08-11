@@ -186,7 +186,7 @@ export function RecordsTable() {
                   <Checkbox
                     checked={allSelected}
                     mixed={partiallySelected}
-                    onChange={toggleAll}
+                    onChangeAction={toggleAll}
                     label="Select all rows"
                   />
                   <span className="text-[11.5px] font-medium text-ink-3">Name</span>
@@ -208,7 +208,11 @@ export function RecordsTable() {
                 >
                   <td className="border-b border-line px-3 py-2">
                     <span className="flex items-center gap-2.5">
-                      <Checkbox checked={rowSelected} onChange={() => toggleRow(row.id)} label={`Select ${row.name}`} />
+                      <Checkbox
+                        checked={rowSelected}
+                        onChangeAction={() => toggleRow(row.id)}
+                        label={`Select ${row.name}`}
+                      />
                       <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-field text-[11px] font-medium text-ink-2">
                         {row.name.slice(0, 1)}
                       </span>

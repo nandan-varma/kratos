@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useState, useEffect, useLayoutEffect, useRef } from "react"
 
 /**
  * THINKING — expandable agent trace, four variants
@@ -16,8 +16,8 @@ import * as React from "react"
 const STAGES = [800, 600, 1800, 2600, 1600]
 
 function useSequence(steps: number[]) {
-  const [stage, setStage] = React.useState(0)
-  React.useEffect(() => {
+  const [stage, setStage] = useState(0)
+  useEffect(() => {
     if (stage >= steps.length - 1) return
     const t = setTimeout(() => setStage((s) => s + 1), steps[stage])
     return () => clearTimeout(t)
@@ -111,16 +111,16 @@ const TONES = ["bg-accent", "bg-orange", "bg-green"]
 
 export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
   const stage = useSequence(STAGES)
-  const [manualExpanded, setManualExpanded] = React.useState<boolean | null>(null)
-  const [selectedTool, setSelectedTool] = React.useState<string | null>(null)
+  const [manualExpanded, setManualExpanded] = useState<boolean | null>(null)
+  const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const v = VARIANTS[variant] ?? VARIANTS.Steps
   const autoExpanded = stage >= 1 && stage < 4
   const expanded = manualExpanded ?? autoExpanded
   const working = stage < 3
   const visible = stage < 2 ? 0 : stage === 2 ? Math.min(2, v.rows.length) : v.rows.length
-  const traceRef = React.useRef<HTMLDivElement>(null)
-  const [lineHeight, setLineHeight] = React.useState(0)
-  React.useLayoutEffect(() => {
+  const traceRef = useRef<HTMLDivElement>(null)
+  const [lineHeight, setLineHeight] = useState(0)
+  useLayoutEffect(() => {
     if (traceRef.current) setLineHeight(traceRef.current.offsetHeight)
   }, [])
 

@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 
 import { useStagedSequence } from "@/hooks/use-staged-sequence"
 
@@ -103,16 +103,16 @@ const TONES = ["bg-accent", "bg-orange", "bg-green"] as const
 
 export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
   const stage = useStagedSequence(STAGES)
-  const [manualExpanded, setManualExpanded] = React.useState<boolean | null>(null)
-  const [selectedTool, setSelectedTool] = React.useState<string | null>(null)
+  const [manualExpanded, setManualExpanded] = useState<boolean | null>(null)
+  const [selectedTool, setSelectedTool] = useState<string | null>(null)
   const v = (VARIANTS[variant] ?? VARIANTS.Steps)!
   const autoExpanded = stage >= 1 && stage < 4
   const expanded = manualExpanded ?? autoExpanded
   const working = stage < 3
   const visible = stage < 2 ? 0 : stage === 2 ? Math.min(2, v.rows.length) : v.rows.length
-  const traceRef = React.useRef<HTMLDivElement>(null)
-  const [lineHeight, setLineHeight] = React.useState(0)
-  React.useLayoutEffect(() => {
+  const traceRef = useRef<HTMLDivElement>(null)
+  const [lineHeight, setLineHeight] = useState(0)
+  useLayoutEffect(() => {
     if (traceRef.current) setLineHeight(traceRef.current.offsetHeight)
   }, [])
 

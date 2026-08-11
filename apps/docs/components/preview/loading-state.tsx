@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useEffect, useState } from "react"
 
 /**
  * Pixel-grid loader for long-running work.
@@ -37,9 +37,9 @@ const PATTERNS = {
 export type LoadingStateVariant = keyof typeof PATTERNS
 
 function useElapsed() {
-  const [deciseconds, setDeciseconds] = React.useState(0)
+  const [deciseconds, setDeciseconds] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const id = setInterval(() => setDeciseconds((d) => d + 1), 100)
     return () => clearInterval(id)
   }, [])

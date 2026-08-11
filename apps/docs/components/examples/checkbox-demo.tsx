@@ -7,8 +7,8 @@ export function CheckboxDemo() {
   const [checked, setChecked] = React.useState(true)
   return (
     <div className="flex items-center gap-4">
-      <Checkbox checked={checked} onChange={() => setChecked((c) => !c)} label="Enable notifications" />
-      <Checkbox checked={false} mixed onChange={() => {}} label="Mixed state" />
+      <Checkbox checked={checked} onChangeAction={() => setChecked((c) => !c)} label="Enable notifications" />
+      <Checkbox checked={false} mixed onChangeAction={() => {}} label="Mixed state" />
     </div>
   )
 }

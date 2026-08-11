@@ -1,6 +1,7 @@
 "use client"
 
-import * as React from "react"
+import { useMemo, useState } from "react"
+import type { PointerEvent } from "react"
 
 /**
  * INSIGHT CARDS
@@ -13,7 +14,7 @@ function formatPercent(v: number) {
 }
 
 function useChartPath(values: number[], width: number, height: number, padding = 6) {
-  return React.useMemo(() => {
+  return useMemo(() => {
     const min = Math.min(...values)
     const max = Math.max(...values)
     const range = max - min || 1
@@ -39,9 +40,9 @@ function MiniChart({
   const width = 280
   const height = 120
   const { d, points } = useChartPath(values, width, height)
-  const [hover, setHover] = React.useState<number | null>(null)
+  const [hover, setHover] = useState<number | null>(null)
 
-  const onMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const progress = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
     setHover(Math.round(progress * (values.length - 1)))
@@ -141,7 +142,7 @@ function AllocationCard() {
     { name: "DB", label: "Database", pct: 27, cls: "bg-line-strong" },
     { name: "CDN", label: "CDN", pct: 15, cls: "bg-line" },
   ]
-  const [selected, setSelected] = React.useState(segments[0]!.name)
+  const [selected, setSelected] = useState(segments[0]!.name)
   const active = segments.find((s) => s.name === selected)!
 
   return (
@@ -216,7 +217,7 @@ const PAGES = [
 ]
 
 export function InsightCards() {
-  const [page, setPage] = React.useState(0)
+  const [page, setPage] = useState(0)
   const move = (direction: -1 | 1) => setPage((current) => (current + direction + PAGES.length) % PAGES.length)
   const { prose, Card, pill } = PAGES[page]!
 
