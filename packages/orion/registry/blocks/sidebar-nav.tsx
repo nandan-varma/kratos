@@ -186,7 +186,7 @@ export function SidebarNav() {
                     onBlur={() => setHovered(null)}
                     onClick={() => setActive(item.key)}
                     aria-current={isActive ? "page" : undefined}
-                    className="group relative z-10 flex w-full items-center gap-2 rounded-[7px] px-2 py-1.5 text-left transition-[color,transform] duration-150 active:scale-[0.96]"
+                    className="group relative z-10 flex w-full items-center gap-2 rounded-control px-2 py-1.5 text-left transition-[color,transform] duration-150 active:scale-[0.96]"
                   >
                     <span className={isActive ? "text-ink" : "text-ink-3"}>
                       <Icon kind={item.key} />

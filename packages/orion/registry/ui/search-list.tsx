@@ -25,7 +25,7 @@ export function SearchList() {
   return (
     <div className="flex min-h-[248px] w-full max-w-72 flex-col items-stretch">
       <div className="w-full self-start overflow-hidden rounded-card bg-surface shadow-raised">
-        <div className="flex h-10 items-center gap-2 border-b border-line px-3 transition-colors duration-100 hover:bg-hover">
+        <div className="flex h-8 items-center gap-2 border-b border-line px-3 transition-colors duration-100 hover:bg-hover">
           <svg
             width="14"
             height="14"
@@ -98,7 +98,7 @@ export function SearchList() {
                 key={item}
                 type="button"
                 onClick={() => setQuery(item)}
-                className="flex h-8 w-full items-center rounded-[6px] px-2 text-left text-[13px] text-ink transition-colors duration-100 hover:bg-hover"
+                className="flex h-7 w-full items-center rounded-control px-2 text-left text-[13px] text-ink transition-colors duration-100 hover:bg-hover"
                 style={{ animation: "fade-in 200ms ease-out both" }}
               >
                 {item}
