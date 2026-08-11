@@ -45,7 +45,16 @@ function Icon({ kind }: { kind: string }) {
     ),
   }
   return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       {paths[kind]}
     </svg>
   )
@@ -64,7 +73,7 @@ export function SidebarNav() {
   React.useLayoutEffect(() => {
     const container = navRef.current
     const target = itemRefs.current[hovered ?? active]
-    if (!container || !target) return
+    if (!(container && target)) return
     const containerRect = container.getBoundingClientRect()
     const targetRect = target.getBoundingClientRect()
     setBox({ top: targetRect.top - containerRect.top, height: targetRect.height })
@@ -83,13 +92,30 @@ export function SidebarNav() {
           <span className="block truncate text-[13px] font-medium leading-tight text-ink">Atlas Studio</span>
           <span className="block truncate text-[11px] leading-tight text-ink-3">Engineering</span>
         </span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--ink-3)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <path d="M7 15l5 5 5-5M7 9l5-5 5 5" />
         </svg>
       </button>
 
       <label className="mb-1 flex h-8 items-center gap-2 rounded-control bg-inset px-2.5 shadow-hairline">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" strokeWidth="2" strokeLinecap="round">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--ink-3)"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
           <circle cx="11" cy="11" r="7" />
           <path d="M21 21l-4.3-4.3" />
         </svg>
@@ -99,7 +125,9 @@ export function SidebarNav() {
           placeholder="Quick search"
           className="min-w-0 flex-1 bg-transparent text-[12.5px] text-ink outline-none placeholder:text-ink-3"
         />
-        <kbd className="flex size-4.5 items-center justify-center rounded-[5px] bg-surface text-[10px] text-ink-3 shadow-hairline">/</kbd>
+        <kbd className="flex size-4.5 items-center justify-center rounded-[5px] bg-surface text-[10px] text-ink-3 shadow-hairline">
+          /
+        </kbd>
       </label>
 
       <button
@@ -112,7 +140,15 @@ export function SidebarNav() {
       >
         <span className="min-w-0 flex-1 truncate text-left">New task</span>
         <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-accent text-white">
-          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+          <svg
+            width="9"
+            height="9"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          >
             <path d="M12 5v14M5 12h14" />
           </svg>
         </span>
@@ -126,12 +162,15 @@ export function SidebarNav() {
             top: box?.top ?? 0,
             height: box?.height ?? 0,
             opacity: box ? 1 : 0,
-            transition: "top 220ms cubic-bezier(0.23,1,0.32,1), height 220ms cubic-bezier(0.23,1,0.32,1), opacity 150ms ease",
+            transition:
+              "top 220ms cubic-bezier(0.23,1,0.32,1), height 220ms cubic-bezier(0.23,1,0.32,1), opacity 150ms ease",
           }}
         />
         {sections.map((section) => (
           <div key={section}>
-            <div className="px-2 pb-1 pt-1 text-[10.5px] font-medium uppercase tracking-[0.08em] text-ink-3">{section}</div>
+            <div className="px-2 pb-1 pt-1 text-[10.5px] font-medium uppercase tracking-[0.08em] text-ink-3">
+              {section}
+            </div>
             <div className="flex flex-col gap-px">
               {ITEMS.filter((item) => item.section === section).map((item) => {
                 const isActive = item.key === active
@@ -152,7 +191,9 @@ export function SidebarNav() {
                     <span className={isActive ? "text-ink" : "text-ink-3"}>
                       <Icon kind={item.key} />
                     </span>
-                    <span className={`min-w-0 flex-1 truncate text-[13px] transition-colors duration-150 ${isActive ? "font-medium text-ink" : "text-ink-2"}`}>
+                    <span
+                      className={`min-w-0 flex-1 truncate text-[13px] transition-colors duration-150 ${isActive ? "font-medium text-ink" : "text-ink-2"}`}
+                    >
                       {item.label}
                     </span>
                     {item.count && (
@@ -171,7 +212,15 @@ export function SidebarNav() {
                         className="flex size-4.5 items-center justify-center rounded-[5px] text-ink-3 opacity-0 transition-[background-color,color,opacity] duration-100 group-hover:opacity-100 hover:bg-line/70 hover:text-ink-2"
                         style={isActive ? { opacity: 1 } : undefined}
                       >
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                        >
                           <path d="M12 5v14M5 12h14" />
                         </svg>
                       </span>

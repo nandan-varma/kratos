@@ -1,5 +1,5 @@
-import { Button } from "@/components/preview/button";
+import { Button } from "@/components/preview/button"
 
 export function ButtonDemo() {
-  return <Button>Button</Button>;
+  return <Button>Button</Button>
 }

@@ -18,15 +18,10 @@ const TOKENS: Token[] = [
     .split(" ")
     .map((text) => ({ text })),
   { text: "", cite: true },
-  ..."Stone-fruit flavors are trending in the same range."
-    .split(" ")
-    .map((text) => ({ text })),
+  ..."Stone-fruit flavors are trending in the same range.".split(" ").map((text) => ({ text })),
 ]
 
-const FOLLOW_UPS = [
-  "Which flavors sell best in winter",
-  "Compare gelato and soft serve margins",
-]
+const FOLLOW_UPS = ["Which flavors sell best in winter", "Compare gelato and soft serve margins"]
 
 const SOURCE_IMAGES = {
   scoop:
@@ -98,12 +93,9 @@ export function StreamingText() {
   const done = count >= TOKENS.length
 
   React.useEffect(() => {
-    const t = setTimeout(
-      () => setCount((c) => (c >= TOKENS.length ? 0 : c + 1)),
-      done ? HOLD_MS : WORD_MS,
-    )
+    const t = setTimeout(() => setCount((c) => (c >= TOKENS.length ? 0 : c + 1)), done ? HOLD_MS : WORD_MS)
     return () => clearTimeout(t)
-  }, [count, done])
+  }, [done])
 
   return (
     <div className="min-h-[15.5rem] w-full max-w-95">
@@ -196,15 +188,9 @@ export function StreamingText() {
                 rel="noreferrer"
                 className="flex items-center gap-2 rounded-[6px] px-1.5 py-1 text-[12px] text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink"
               >
-                <img
-                  src={source.image}
-                  alt=""
-                  className="size-4 rounded-[4px]"
-                />
+                <img src={source.image} alt="" className="size-4 rounded-[4px]" />
                 <span className="animated-underline">{source.name}</span>
-                <span className="ml-auto font-mono text-[10.5px] text-ink-3">
-                  {source.domain}
-                </span>
+                <span className="ml-auto font-mono text-[10.5px] text-ink-3">{source.domain}</span>
               </a>
             ))}
           </div>

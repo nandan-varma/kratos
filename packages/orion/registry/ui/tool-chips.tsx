@@ -61,7 +61,7 @@ const ROWS: {
     mono: true,
     detailMono: true,
     detail: [
-      { text: '+ const windows = slots.filter((s) => s.temp <= -12)', tone: "add" },
+      { text: "+ const windows = slots.filter((s) => s.temp <= -12)", tone: "add" },
       { text: '+ return schedule(windows, { hero: "pistachio" })', tone: "add" },
     ],
   },
@@ -79,10 +79,7 @@ const ROWS: {
     chip: "flavor-chart.png",
     mono: true,
     detailMono: false,
-    detail: [
-      { text: "1280 × 720 · line chart, three summers." },
-      { text: "Mint chip trends up 12% through July." },
-    ],
+    detail: [{ text: "1280 × 720 · line chart, three summers." }, { text: "Mint chip trends up 12% through July." }],
   },
 ]
 

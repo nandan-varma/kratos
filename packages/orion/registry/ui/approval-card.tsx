@@ -32,7 +32,7 @@ export function ApprovalCard() {
   const [custom, setCustom] = React.useState<Record<number, string>>({})
   const [sent, setSent] = React.useState(false)
   const [open, setOpen] = React.useState(true)
-  const question = QUESTIONS[qi]
+  const question = QUESTIONS[qi]!
   const last = qi === QUESTIONS.length - 1
   const selected = answers[qi] ?? []
   const hasAnswer = selected.length > 0 || Boolean(custom[qi]?.trim())
@@ -105,11 +105,7 @@ export function ApprovalCard() {
             >
               Answers sent
             </span>
-            <button
-              type="button"
-              onClick={reset}
-              className="text-[12px] font-medium text-accent-ink hover:underline"
-            >
+            <button type="button" onClick={reset} className="text-[12px] font-medium text-accent-ink hover:underline">
               Start over
             </button>
           </div>
@@ -155,9 +151,7 @@ export function ApprovalCard() {
                       className={`flex size-4 shrink-0 items-center justify-center transition-colors duration-200 ${
                         question.type === "radio" ? "rounded-full" : "rounded-[5px]"
                       } ${
-                        on
-                          ? "bg-ink text-canvas"
-                          : "shadow-[inset_0_0_0_1.5px_var(--line-strong)] text-transparent"
+                        on ? "bg-ink text-canvas" : "shadow-[inset_0_0_0_1.5px_var(--line-strong)] text-transparent"
                       }`}
                     >
                       {question.type === "radio" ? (
@@ -180,9 +174,7 @@ export function ApprovalCard() {
                         </svg>
                       )}
                     </span>
-                    <span
-                      className={`text-[13px] transition-colors duration-200 ${on ? "text-ink" : "text-ink-2"}`}
-                    >
+                    <span className={`text-[13px] transition-colors duration-200 ${on ? "text-ink" : "text-ink-2"}`}>
                       {option}
                     </span>
                   </button>
@@ -194,8 +186,7 @@ export function ApprovalCard() {
                   value={custom[qi] ?? ""}
                   onChange={(event) => {
                     setCustom((current) => ({ ...current, [qi]: event.target.value }))
-                    if (question.type === "radio")
-                      setAnswers((current) => ({ ...current, [qi]: [] }))
+                    if (question.type === "radio") setAnswers((current) => ({ ...current, [qi]: [] }))
                   }}
                   placeholder="Type something…"
                   aria-label="Custom answer"
@@ -280,9 +271,7 @@ export function ApprovalCard() {
               style={{
                 background: hasAnswer ? "var(--ink)" : "var(--field)",
                 color: hasAnswer ? "var(--surface)" : "var(--ink-3)",
-                boxShadow: hasAnswer
-                  ? "inset 0 1px 0 rgba(255,255,255,0.14)"
-                  : "var(--shadow-btn)",
+                boxShadow: hasAnswer ? "inset 0 1px 0 rgba(255,255,255,0.14)" : "var(--shadow-btn)",
               }}
             >
               <svg

@@ -1,4 +1,4 @@
-import { Tag } from "@/components/preview/tag";
+import { Tag } from "@/components/preview/tag"
 
 export function TagDemo() {
   return (
@@ -7,5 +7,5 @@ export function TagDemo() {
       <Tag name="Design" color="#9a5cff" />
       <Tag name="Growth" color="#f09a2f" />
     </div>
-  );
+  )
 }

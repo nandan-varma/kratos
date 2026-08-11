@@ -10,9 +10,30 @@ import * as React from "react"
 type Tok = { t: string; c?: "kw" | "str" | "fn" | "dim" }
 
 const LINES: Tok[][] = [
-  [{ t: "export function ", c: "kw" }, { t: "createSession", c: "fn" }, { t: "(", c: "dim" }, { t: "userId", c: "str" }, { t: ") {", c: "dim" }],
-  [{ t: "  const ", c: "kw" }, { t: "token = " }, { t: "sign", c: "fn" }, { t: "({ userId }, ", c: "dim" }, { t: "SECRET", c: "str" }, { t: ");", c: "dim" }],
-  [{ t: "  const ", c: "kw" }, { t: "expires = " }, { t: "Date." }, { t: "now", c: "fn" }, { t: "() + " }, { t: "SESSION_TTL", c: "str" }, { t: ";", c: "dim" }],
+  [
+    { t: "export function ", c: "kw" },
+    { t: "createSession", c: "fn" },
+    { t: "(", c: "dim" },
+    { t: "userId", c: "str" },
+    { t: ") {", c: "dim" },
+  ],
+  [
+    { t: "  const ", c: "kw" },
+    { t: "token = " },
+    { t: "sign", c: "fn" },
+    { t: "({ userId }, ", c: "dim" },
+    { t: "SECRET", c: "str" },
+    { t: ");", c: "dim" },
+  ],
+  [
+    { t: "  const ", c: "kw" },
+    { t: "expires = " },
+    { t: "Date." },
+    { t: "now", c: "fn" },
+    { t: "() + " },
+    { t: "SESSION_TTL", c: "str" },
+    { t: ";", c: "dim" },
+  ],
   [{ t: "  return ", c: "kw" }, { t: "{ token, expires };" }],
   [{ t: "}", c: "dim" }],
 ]
@@ -69,11 +90,29 @@ export function CodeBlock() {
           }`}
         >
           {copied ? (
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M20 6L9 17l-5-5" />
             </svg>
           ) : (
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <rect x="9" y="9" width="12" height="12" rx="2.5" />
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
             </svg>
@@ -85,7 +124,9 @@ export function CodeBlock() {
       <pre className="min-h-[137px] bg-inset px-3 py-2.5 font-mono text-[11.5px] leading-[1.7]">
         {LINES.slice(0, count).map((line, i) => (
           <div key={i} className="flex" style={{ animation: "fade-up 250ms cubic-bezier(0.23,1,0.32,1) both" }}>
-            <span className="w-5 shrink-0 text-right text-[10.5px] leading-[1.86] text-ink-3/60 select-none">{i + 1}</span>
+            <span className="w-5 shrink-0 text-right text-[10.5px] leading-[1.86] text-ink-3/60 select-none">
+              {i + 1}
+            </span>
             <span className="pl-2.5 whitespace-pre">
               {line.map((tok, j) => (
                 <span key={j} style={{ color: tok.c ? COLORS[tok.c] : "var(--ink-2)" }}>

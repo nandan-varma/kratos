@@ -120,15 +120,28 @@ export function FineTuneCard() {
   const [opacity, setOpacity] = React.useState(100)
   const [menuOpen, setMenuOpen] = React.useState(false)
   const [typeValue, setTypeValue] = React.useState("Select type")
-  const done = seg !== 0 || width !== 280 || height !== 88 || radius !== 14 || opacity !== 100 || typeValue !== "Select type"
+  const done =
+    seg !== 0 || width !== 280 || height !== 88 || radius !== 14 || opacity !== 100 || typeValue !== "Select type"
 
   return (
     <div className="relative w-full max-w-60 rounded-card bg-surface shadow-raised">
       <div className="primitive-card-bar flex items-center justify-between border-b border-line">
         <span className="text-[13px] font-medium text-ink">Card component</span>
         {done ? (
-          <span className="flex items-center gap-1.5 text-[12px] font-medium text-green" style={{ animation: "pop-in 250ms cubic-bezier(0.23,1,0.32,1) both" }}>
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <span
+            className="flex items-center gap-1.5 text-[12px] font-medium text-green"
+            style={{ animation: "pop-in 250ms cubic-bezier(0.23,1,0.32,1) both" }}
+          >
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M20 6L9 17l-5-5" />
             </svg>
             Edited
@@ -186,7 +199,15 @@ export function FineTuneCard() {
         </div>
         <div className="grid min-w-0 grid-cols-2 gap-2">
           <ScrubField label="Radius" value={radius} onChange={setRadius} min={0} max={64} active={radius !== 14} />
-          <ScrubField label="Opacity" value={opacity} onChange={setOpacity} min={0} max={100} suffix="%" active={opacity !== 100} />
+          <ScrubField
+            label="Opacity"
+            value={opacity}
+            onChange={setOpacity}
+            min={0}
+            max={100}
+            suffix="%"
+            active={opacity !== 100}
+          />
         </div>
       </div>
 
@@ -200,7 +221,9 @@ export function FineTuneCard() {
             className="flex h-6.5 w-full items-center justify-between rounded-chip bg-inset py-1 pr-1 pl-2 shadow-hairline transition-shadow duration-200 focus-visible:outline-none"
             style={{ boxShadow: menuOpen ? "0 0 0 1px var(--accent)" : undefined }}
           >
-            <span className={`text-[12px] ${typeValue !== "Select type" ? "text-ink" : "text-ink-3"}`}>{typeValue}</span>
+            <span className={`text-[12px] ${typeValue !== "Select type" ? "text-ink" : "text-ink-3"}`}>
+              {typeValue}
+            </span>
             <svg
               width="11"
               height="11"

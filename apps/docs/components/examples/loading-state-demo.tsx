@@ -1,16 +1,13 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import {
-  LoadingState,
-  type LoadingStateVariant,
-} from "@/components/preview/loading-state";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { LoadingState, type LoadingStateVariant } from "@/components/preview/loading-state"
+import { cn } from "@/lib/utils"
 
-const VARIANTS: LoadingStateVariant[] = ["Drive", "Dots", "Orbit"];
+const VARIANTS: LoadingStateVariant[] = ["Drive", "Dots", "Orbit"]
 
 export function LoadingStateDemo() {
-  const [variant, setVariant] = React.useState<LoadingStateVariant>("Drive");
+  const [variant, setVariant] = React.useState<LoadingStateVariant>("Drive")
 
   return (
     <div className="relative flex w-full flex-col items-center gap-8">
@@ -23,9 +20,7 @@ export function LoadingStateDemo() {
             onClick={() => setVariant(v)}
             className={cn(
               "rounded-full px-2 py-0.5 text-[11.5px] font-medium transition-[background-color,color,box-shadow] duration-150",
-              variant === v
-                ? "bg-surface text-ink shadow-btn"
-                : "text-ink-3 hover:text-ink-2",
+              variant === v ? "bg-surface text-ink shadow-btn" : "text-ink-3 hover:text-ink-2",
             )}
           >
             {v}
@@ -33,5 +28,5 @@ export function LoadingStateDemo() {
         ))}
       </div>
     </div>
-  );
+  )
 }

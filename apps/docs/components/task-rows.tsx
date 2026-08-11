@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
-
-import { useStagedSequence } from "@/hooks/use-staged-sequence"
 import { SpinnerRing } from "@/components/preview/spinner-ring"
 import { StatusBadge as Badge } from "@/components/preview/status-badge"
+import { useStagedSequence } from "@/hooks/use-staged-sequence"
 
 /**
  * TASK ROWS
@@ -15,17 +14,43 @@ import { StatusBadge as Badge } from "@/components/preview/status-badge"
 const TICKS = [600, 900, 2400, 1400, 2400, 600]
 
 const X_ICON = (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3.5"
+    strokeLinecap="round"
+  >
     <path d="M18 6L6 18M6 6l12 12" />
   </svg>
 )
 const CHECK_ICON = (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20 6L9 17l-5-5" />
   </svg>
 )
 const RETRY_ICON = (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6" />
   </svg>
 )
@@ -80,7 +105,10 @@ export function TaskRows({ variant = "Capsules" }: { variant?: string }) {
             className="inline-flex h-5.5 items-center gap-1.5 rounded-full bg-red-tint px-2 text-[11.5px] font-medium text-red"
             style={{ animation: "fade-in 200ms ease-out both" }}
           >
-            Failed <span style={{ animation: "spin 1.2s linear infinite" }} className="flex">{RETRY_ICON}</span>
+            Failed{" "}
+            <span style={{ animation: "spin 1.2s linear infinite" }} className="flex">
+              {RETRY_ICON}
+            </span>
           </span>
         ) : row2 === "done" ? (
           <span
@@ -127,7 +155,10 @@ export function TaskRows({ variant = "Capsules" }: { variant?: string }) {
               <span className="min-w-0 flex-1 truncate text-[13px] font-medium text-ink">{row.label}</span>
               <span className="text-[12.5px] text-ink-2 tabular-nums">{row.amount}</span>
               {row.pill}
-              <span aria-hidden="true" className="-ml-2 flex size-7 shrink-0 items-center justify-center rounded-full text-ink-3">
+              <span
+                aria-hidden="true"
+                className="-ml-2 flex size-7 shrink-0 items-center justify-center rounded-full text-ink-3"
+              >
                 <svg
                   width="15"
                   height="15"

@@ -26,10 +26,7 @@ type Row = {
   href?: string
 }
 
-const VARIANTS: Record<
-  string,
-  { active: string; done: string; rows: Row[]; query?: string }
-> = {
+const VARIANTS: Record<string, { active: string; done: string; rows: Row[]; query?: string }> = {
   Steps: {
     active: "Thinking",
     done: "Thought for 4 seconds",
@@ -45,12 +42,10 @@ const VARIANTS: Record<
     done: "Thought for 4 seconds",
     rows: [
       {
-        primary:
-          "Summer demand spikes for stone-fruit flavors — peach and apricot lead.",
+        primary: "Summer demand spikes for stone-fruit flavors — peach and apricot lead.",
       },
       {
-        primary:
-          "I should check cone inventory before promoting a waffle-bowl special.",
+        primary: "I should check cone inventory before promoting a waffle-bowl special.",
       },
     ],
   },
@@ -95,17 +90,8 @@ const VARIANTS: Record<
 
 function Dot({ tone }: { tone: string }) {
   return (
-    <span
-      className={`flex size-3.5 shrink-0 items-center justify-center rounded-full text-white ${tone}`}
-    >
-      <svg
-        width="9"
-        height="9"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-      >
+    <span className={`flex size-3.5 shrink-0 items-center justify-center rounded-full text-white ${tone}`}>
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <circle cx="12" cy="12" r="9" />
         <path d="M3.5 12h17M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
       </svg>
@@ -113,25 +99,22 @@ function Dot({ tone }: { tone: string }) {
   )
 }
 
-const TONES = ["bg-accent", "bg-orange", "bg-green"]
+const TONES = ["bg-accent", "bg-orange", "bg-green"] as const
 
 export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
   const stage = useStagedSequence(STAGES)
-  const [manualExpanded, setManualExpanded] = React.useState<boolean | null>(
-    null,
-  )
+  const [manualExpanded, setManualExpanded] = React.useState<boolean | null>(null)
   const [selectedTool, setSelectedTool] = React.useState<string | null>(null)
-  const v = VARIANTS[variant] ?? VARIANTS.Steps
+  const v = (VARIANTS[variant] ?? VARIANTS.Steps)!
   const autoExpanded = stage >= 1 && stage < 4
   const expanded = manualExpanded ?? autoExpanded
   const working = stage < 3
-  const visible =
-    stage < 2 ? 0 : stage === 2 ? Math.min(2, v.rows.length) : v.rows.length
+  const visible = stage < 2 ? 0 : stage === 2 ? Math.min(2, v.rows.length) : v.rows.length
   const traceRef = React.useRef<HTMLDivElement>(null)
   const [lineHeight, setLineHeight] = React.useState(0)
   React.useLayoutEffect(() => {
     if (traceRef.current) setLineHeight(traceRef.current.offsetHeight)
-  }, [visible, expanded, variant, stage])
+  }, [])
 
   return (
     <div key={variant} className="flex min-h-[176px] w-full max-w-95 flex-col">
@@ -143,20 +126,14 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
         className="-mx-1.5 flex w-fit items-center gap-2 rounded-control px-1.5 py-1
         transition-colors duration-100 hover:bg-hover-2"
       >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill={working ? "var(--ink-2)" : "var(--ink-3)"}
-        >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill={working ? "var(--ink-2)" : "var(--ink-3)"}>
           <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" />
         </svg>
         {working ? (
           <span
             className="bg-clip-text text-[13px] font-medium whitespace-nowrap text-transparent"
             style={{
-              backgroundImage:
-                "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
+              backgroundImage: "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
               backgroundSize: "200% 100%",
               animation: "shimmer-text 1.4s linear infinite",
             }}
@@ -212,9 +189,7 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
                 <div
                   className="flex h-6 items-center gap-2 px-1.5"
                   style={{
-                    animation: expanded
-                      ? "fade-up 300ms cubic-bezier(0.23,1,0.32,1) both"
-                      : undefined,
+                    animation: expanded ? "fade-up 300ms cubic-bezier(0.23,1,0.32,1) both" : undefined,
                   }}
                 >
                   <svg
@@ -236,7 +211,7 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
               {v.rows.slice(0, visible).map((row, i) => {
                 const content = (
                   <>
-                    {variant === "Search" && <Dot tone={TONES[i % 3]} />}
+                    {variant === "Search" && <Dot tone={TONES[i % 3]!} />}
                     {variant === "Steps" &&
                       (i < visible - 1 || !working ? (
                         <svg
@@ -264,22 +239,18 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
                       {row.primary}
                     </span>
                     {row.secondary && (
-                      <span
-                        className={`shrink-0 text-[11.5px] text-ink-3 ${row.mono ? "font-mono" : ""}`}
-                      >
+                      <span className={`shrink-0 text-[11.5px] text-ink-3 ${row.mono ? "font-mono" : ""}`}>
                         {row.secondary}
                       </span>
                     )}
                     {row.add !== undefined && (
                       <span className="shrink-0 font-mono text-[11px] tabular-nums">
-                        <span className="text-green">+{row.add}</span>{" "}
-                        <span className="text-red">−{row.del}</span>
+                        <span className="text-green">+{row.add}</span> <span className="text-red">−{row.del}</span>
                       </span>
                     )}
                   </>
                 )
-                const rowClass =
-                  "flex min-h-7 w-full items-center gap-2 rounded-[6px] px-1.5 py-0.5 text-left"
+                const rowClass = "flex min-h-7 w-full items-center gap-2 rounded-[6px] px-1.5 py-0.5 text-left"
                 const animation = {
                   animation: `fade-up 320ms cubic-bezier(0.23,1,0.32,1) ${i * 120}ms both`,
                 }
@@ -306,9 +277,7 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
                       key={row.primary}
                       type="button"
                       aria-pressed={selected}
-                      onClick={() =>
-                        setSelectedTool(selected ? null : row.primary)
-                      }
+                      onClick={() => setSelectedTool(selected ? null : row.primary)}
                       className={`${rowClass} transition-colors duration-150 ${selected ? "bg-inset" : "hover:bg-hover"}`}
                       style={animation}
                     >
@@ -324,10 +293,7 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
                 )
               })}
               {variant === "Search" && stage >= 3 && (
-                <span
-                  className="text-[12px] text-ink-3"
-                  style={{ animation: "fade-in 300ms ease-out both" }}
-                >
+                <span className="text-[12px] text-ink-3" style={{ animation: "fade-in 300ms ease-out both" }}>
                   +7 more
                 </span>
               )}

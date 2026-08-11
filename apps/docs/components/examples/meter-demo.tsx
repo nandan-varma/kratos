@@ -1,4 +1,4 @@
-import { Meter } from "@/components/preview/meter";
+import { Meter } from "@/components/preview/meter"
 
 export function MeterDemo() {
   return (
@@ -7,5 +7,5 @@ export function MeterDemo() {
       <Meter signal={2} tone="var(--orange)" />
       <Meter signal={0} tone="var(--ink-3)" />
     </div>
-  );
+  )
 }

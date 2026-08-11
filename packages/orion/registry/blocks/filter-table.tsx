@@ -51,7 +51,9 @@ export function FilterTable() {
             >
               {f.dot && <span className="size-1.5 rounded-full" style={{ background: f.dot }} />}
               {f.label}
-              <span className={`rounded-[4px] px-1 text-[10.5px] tabular-nums ${active ? "bg-field text-ink-2" : "text-ink-3"}`}>
+              <span
+                className={`rounded-[4px] px-1 text-[10.5px] tabular-nums ${active ? "bg-field text-ink-2" : "text-ink-3"}`}
+              >
                 {f.count}
               </span>
             </button>
@@ -91,7 +93,9 @@ export function FilterTable() {
                     <span className="truncate font-medium text-ink">{row.task}</span>
                     <span className="text-ink-2 tabular-nums">{row.date}</span>
                     <span>
-                      <span className={`inline-flex h-5 items-center rounded-[5px] px-1.5 text-[11px] font-medium ${pill.className}`}>
+                      <span
+                        className={`inline-flex h-5 items-center rounded-[5px] px-1.5 text-[11px] font-medium ${pill.className}`}
+                      >
                         {pill.label}
                       </span>
                     </span>

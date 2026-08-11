@@ -79,14 +79,16 @@
   --card: var(--card);
   --foreground: var(--foreground);
   --background: var(--background);
-  --ease-link: cubic-bezier(.16,1,.3,1);
+  --ease-link: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes pixel-on {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.15;
   }
-  18%, 42% {
+  18%,
+  42% {
     opacity: 1;
   }
   62% {
@@ -145,7 +147,8 @@
   }
 }
 @keyframes eq-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scaleY(0.35);
   }
   50% {
@@ -267,7 +270,8 @@
 @layer components {
   .animated-underline {
     display: inline-block;
-    position: relative;}
+    position: relative;
+  }
   .animated-underline::after {
     content: "";
     position: absolute;
@@ -278,6 +282,10 @@
     background: currentcolor;
     transform-origin: 0px center;
     transform: scaleX(0);
-    transition: transform .28s var(--ease-link);}
-  a:hover .animated-underline::after, a:focus-visible .animated-underline::after {
-    transform: scaleX(1);}}
+    transition: transform 0.28s var(--ease-link);
+  }
+  a:hover .animated-underline::after,
+  a:focus-visible .animated-underline::after {
+    transform: scaleX(1);
+  }
+}

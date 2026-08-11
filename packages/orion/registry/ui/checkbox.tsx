@@ -1,7 +1,5 @@
 "use client"
 
-import * as React from "react"
-
 export function Checkbox({
   checked,
   mixed = false,
@@ -15,13 +13,7 @@ export function Checkbox({
 }) {
   return (
     <label className="inline-flex size-4 shrink-0 cursor-pointer items-center justify-center" title={label}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-        aria-label={label}
-        className="sr-only"
-      />
+      <input type="checkbox" checked={checked} onChange={onChange} aria-label={label} className="sr-only" />
       <span
         className={`flex size-4 items-center justify-center rounded-[5px] text-canvas transition-colors duration-200 ${
           checked || mixed ? "bg-ink" : "shadow-[inset_0_0_0_1.5px_var(--line-strong)]"

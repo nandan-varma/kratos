@@ -54,12 +54,33 @@ function MiniChart({
       onPointerLeave={() => setHover(null)}
       onPointerDown={onMove}
     >
-      <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" className="overflow-visible">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="none"
+        className="overflow-visible"
+      >
         <path d={d} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
         {hover !== null && (
           <>
-            <line x1={points[hover][0]} x2={points[hover][0]} y1={0} y2={height} stroke="var(--line-strong)" strokeWidth={1} strokeDasharray="3 3" />
-            <circle cx={points[hover][0]} cy={points[hover][1]} r={3.5} fill={color} stroke="var(--surface)" strokeWidth={1.5} />
+            <line
+              x1={points[hover][0]}
+              x2={points[hover][0]}
+              y1={0}
+              y2={height}
+              stroke="var(--line-strong)"
+              strokeWidth={1}
+              strokeDasharray="3 3"
+            />
+            <circle
+              cx={points[hover][0]}
+              cy={points[hover][1]}
+              r={3.5}
+              fill={color}
+              stroke="var(--surface)"
+              strokeWidth={1.5}
+            />
           </>
         )}
       </svg>
@@ -126,11 +147,19 @@ function AllocationCard() {
   return (
     <div className="min-h-[240px] rounded-card bg-surface p-3 shadow-hairline">
       <span className="flex items-center gap-1.5 text-[12px] font-medium text-ink">
-        <span className="flex size-3.5 items-center justify-center rounded-full bg-accent text-[8px] font-bold text-white">$</span>
+        <span className="flex size-3.5 items-center justify-center rounded-full bg-accent text-[8px] font-bold text-white">
+          $
+        </span>
         Infra spend
       </span>
-      <span className="mt-1 block text-[20px] font-semibold tracking-[-0.01em] text-ink tabular-nums">{active.amount ?? `${active.pct}%`}</span>
-      <div className="mt-3 flex h-9 gap-0.5 overflow-hidden rounded-full bg-field p-0.5" role="group" aria-label="Spend segments">
+      <span className="mt-1 block text-[20px] font-semibold tracking-[-0.01em] text-ink tabular-nums">
+        {active.amount ?? `${active.pct}%`}
+      </span>
+      <div
+        className="mt-3 flex h-9 gap-0.5 overflow-hidden rounded-full bg-field p-0.5"
+        role="group"
+        aria-label="Spend segments"
+      >
         {segments.map((s) => (
           <button
             key={s.name}
@@ -207,7 +236,16 @@ export function InsightCards() {
               onClick={() => move(i === 0 ? -1 : 1)}
               className="flex size-6 items-center justify-center rounded-[6px] text-ink-3 transition-[background-color,color,transform] duration-100 hover:bg-hover hover:text-ink active:scale-[0.96]"
             >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d={d} />
               </svg>
             </button>

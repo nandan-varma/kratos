@@ -8,9 +8,7 @@ export function EmptyState() {
       <Inbox className="size-8 text-muted-foreground" />
       <div className="space-y-1">
         <p className="text-sm font-medium">Nothing here yet</p>
-        <p className="text-sm text-muted-foreground">
-          Get started by creating your first item.
-        </p>
+        <p className="text-sm text-muted-foreground">Get started by creating your first item.</p>
       </div>
       <Button size="sm">Create item</Button>
     </div>

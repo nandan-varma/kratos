@@ -1,14 +1,8 @@
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import type { ReactNode } from "react";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
+import { Tab, Tabs } from "fumadocs-ui/components/tabs"
+import type { ReactNode } from "react"
 
-export function ComponentPreview({
-  code,
-  children,
-}: {
-  code: string;
-  children: ReactNode;
-}) {
+export function ComponentPreview({ code, children }: { code: string; children: ReactNode }) {
   return (
     <Tabs items={["Preview", "Code"]}>
       <Tab value="Preview">
@@ -20,5 +14,5 @@ export function ComponentPreview({
         <DynamicCodeBlock lang="tsx" code={code} />
       </Tab>
     </Tabs>
-  );
+  )
 }

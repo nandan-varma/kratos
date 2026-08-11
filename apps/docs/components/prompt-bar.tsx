@@ -8,16 +8,36 @@ import * as React from "react"
  * Type @ or / to open the menus; up/down + Enter to pick.
  */
 
-function Icon({ children, size = 15, strokeWidth = 1.8 }: { children: React.ReactNode; size?: number; strokeWidth?: number }) {
+function Icon({
+  children,
+  size = 15,
+  strokeWidth = 1.8,
+}: {
+  children: React.ReactNode
+  size?: number
+  strokeWidth?: number
+}) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       {children}
     </svg>
   )
 }
 
 const GLYPHS: Record<string, React.ReactNode> = {
-  clip: <path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />,
+  clip: (
+    <path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+  ),
   chart: <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />,
   layers: (
     <g>
@@ -59,7 +79,11 @@ const FILES = ["dashboard.png", "release-notes.md", "usage-export.csv"]
 function parseToken(draft: string): { kind: "at" | "slash"; query: string; start: number } | null {
   const match = /(^|\s)([@/])([\w-]*)$/.exec(draft)
   if (!match) return null
-  return { kind: match[2] === "@" ? "at" : "slash", query: match[3].toLowerCase(), start: match.index + match[1].length }
+  return {
+    kind: match[2] === "@" ? "at" : "slash",
+    query: match[3].toLowerCase(),
+    start: match.index + match[1].length,
+  }
 }
 
 export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
@@ -93,7 +117,9 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
   React.useEffect(() => {
     if (!listening) return
     const t = setTimeout(() => {
-      setDraft((current) => (current ? `${current.trimEnd()} Summarize this week's deploys` : "Summarize this week's deploys"))
+      setDraft((current) =>
+        current ? `${current.trimEnd()} Summarize this week's deploys` : "Summarize this week's deploys",
+      )
       setListening(false)
       inputRef.current?.focus()
     }, 2000)
@@ -152,7 +178,9 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               )
             })}
             {rows.length === 0 && (
-              <div className="flex h-9 items-center px-2 text-[12px] text-ink-3">No matches for &quot;{query}&quot;</div>
+              <div className="flex h-9 items-center px-2 text-[12px] text-ink-3">
+                No matches for &quot;{query}&quot;
+              </div>
             )}
             <div className="mt-1 border-t border-line px-2 pt-1.5 pb-1 text-[11px] text-ink-3">
               {menu === "at" ? "Type to search sources & files" : "Type to search commands"}
@@ -300,7 +328,11 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               {listening ? (
                 <span className="flex h-3.5 items-center gap-[2.5px]">
                   {[0, 1, 2].map((i) => (
-                    <span key={i} className="w-[2.5px] rounded-full bg-current" style={{ height: "100%", animation: `eq-bounce 900ms ease-in-out ${i * 150}ms infinite` }} />
+                    <span
+                      key={i}
+                      className="w-[2.5px] rounded-full bg-current"
+                      style={{ height: "100%", animation: `eq-bounce 900ms ease-in-out ${i * 150}ms infinite` }}
+                    />
                   ))}
                 </span>
               ) : (
@@ -319,7 +351,10 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               disabled={!canSend}
               onClick={send}
               className="flex size-7 shrink-0 items-center justify-center rounded-[8px] transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.94]"
-              style={{ background: canSend ? "var(--ink)" : "var(--line-strong)", color: canSend ? "var(--surface)" : "var(--ink-2)" }}
+              style={{
+                background: canSend ? "var(--ink)" : "var(--line-strong)",
+                color: canSend ? "var(--surface)" : "var(--ink-2)",
+              }}
             >
               <Icon size={16} strokeWidth={2.4}>
                 <path d="M12 19V5M5 12l7-7 7 7" />

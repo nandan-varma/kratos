@@ -1,10 +1,4 @@
-export function StatusBadge({
-  tone,
-  children,
-}: {
-  tone: "red" | "green"
-  children: React.ReactNode
-}) {
+export function StatusBadge({ tone, children }: { tone: "red" | "green"; children: React.ReactNode }) {
   return (
     <span
       className={`flex size-5.5 shrink-0 items-center justify-center rounded-full text-white ${

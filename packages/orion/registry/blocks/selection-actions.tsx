@@ -1,17 +1,7 @@
 "use client"
 
+import { Check, ChevronRight, MessageCircleQuestion, RefreshCw, Scissors, Smile, Sparkles, Type, X } from "lucide-react"
 import * as React from "react"
-import {
-  Check,
-  ChevronRight,
-  MessageCircleQuestion,
-  RefreshCw,
-  Scissors,
-  Smile,
-  Sparkles,
-  Type,
-  X,
-} from "lucide-react"
 
 /**
  * SELECTION ACTIONS
@@ -52,7 +42,7 @@ function StreamedText({ text, onDone }: { text: string; onDone: () => void }) {
     const t = setTimeout(() => setCount((c) => c + 1), 55)
     return () => clearTimeout(t)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count])
+  }, [count, words.length, onDone])
 
   return <>{words.slice(0, count).join(" ")}</>
 }
@@ -87,7 +77,13 @@ export function SelectionActions() {
 
   const busy = mode === "thinking" || mode === "streaming"
   const busyLabel =
-    action === "Improve" ? "Improving" : action === "Shorten" ? "Shortening" : action === "Change tone" ? "Changing tone" : "Editing"
+    action === "Improve"
+      ? "Improving"
+      : action === "Shorten"
+        ? "Shortening"
+        : action === "Change tone"
+          ? "Changing tone"
+          : "Editing"
 
   return (
     <div className="w-full max-w-[460px]">
@@ -155,7 +151,11 @@ export function SelectionActions() {
 
                 <div
                   className="flex min-w-0 items-center gap-0.5 overflow-hidden transition-[max-width,opacity] duration-400"
-                  style={{ maxWidth: expanded ? 262 : 0, opacity: expanded ? 1 : 0, transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)" }}
+                  style={{
+                    maxWidth: expanded ? 262 : 0,
+                    opacity: expanded ? 1 : 0,
+                    transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)",
+                  }}
                 >
                   <button type="button" onClick={() => run("Shorten")} className={control}>
                     <Scissors width={14} height={14} strokeWidth={1.8} aria-hidden />
@@ -181,7 +181,10 @@ export function SelectionActions() {
                 >
                   <span
                     className="flex transition-transform duration-400"
-                    style={{ transform: expanded ? "rotate(90deg)" : "rotate(0deg)", transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)" }}
+                    style={{
+                      transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+                      transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)",
+                    }}
                   >
                     <ChevronRight width={14} height={14} strokeWidth={1.8} aria-hidden />
                   </span>

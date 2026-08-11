@@ -51,7 +51,15 @@ export function ContextCards() {
         >
           <div className="primitive-card-bar flex items-center gap-2.5 border-b border-line">
             <span className="flex min-w-0 items-center gap-1.5 text-[13px] font-medium text-ink">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
                 <path d="M4 6h16M4 12h16M4 18h10" />
               </svg>
               <span className="truncate">{chunk.title}</span>
@@ -69,11 +77,22 @@ export function ContextCards() {
                 transitionDelay: `${i * 80}ms`,
               }}
             >
-              <span className={`flex size-3.5 items-center justify-center rounded-[4px] ${chunk.tone} text-[7px] font-bold text-white`}>
+              <span
+                className={`flex size-3.5 items-center justify-center rounded-[4px] ${chunk.tone} text-[7px] font-bold text-white`}
+              >
                 {chunk.badge}
               </span>
               {chunk.source}
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="9"
+                height="9"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M7 17L17 7M7 7h10v10" />
               </svg>
             </span>

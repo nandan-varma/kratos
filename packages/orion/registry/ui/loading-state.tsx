@@ -32,10 +32,7 @@ const PATTERNS = {
   Drive: { delays: CHEVRON, duration: 650, round: false },
   Dots: { delays: CHEVRON, duration: 650, round: true },
   Orbit: { delays: ORBIT, duration: 950, round: false },
-} satisfies Record<
-  string,
-  { delays: (number | null)[]; duration: number; round: boolean }
->
+} satisfies Record<string, { delays: (number | null)[]; duration: number; round: boolean }>
 
 export type LoadingStateVariant = keyof typeof PATTERNS
 
@@ -71,10 +68,7 @@ export function LoadingState({
             className={`size-1 bg-ink ${round ? "rounded-full" : "rounded-[1px]"}`}
             style={{
               opacity: delay === null ? 0.07 : 0.15,
-              animation:
-                delay === null
-                  ? "none"
-                  : `pixel-on ${duration}ms ease-in-out ${delay}ms infinite`,
+              animation: delay === null ? "none" : `pixel-on ${duration}ms ease-in-out ${delay}ms infinite`,
             }}
           />
         ))}
@@ -82,17 +76,14 @@ export function LoadingState({
       <span
         className="bg-clip-text text-[13px] font-medium text-transparent"
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
+          backgroundImage: "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
           backgroundSize: "200% 100%",
           animation: "shimmer-text 1.4s linear infinite",
         }}
       >
         {label}
       </span>
-      <span className="font-mono text-[12px] text-ink-3 tabular-nums">
-        {elapsed}
-      </span>
+      <span className="font-mono text-[12px] text-ink-3 tabular-nums">{elapsed}</span>
     </div>
   )
 }

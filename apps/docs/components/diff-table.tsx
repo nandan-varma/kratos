@@ -1,7 +1,5 @@
 "use client"
 
-import * as React from "react"
-
 import { useStagedSequence } from "@/hooks/use-staged-sequence"
 
 /**

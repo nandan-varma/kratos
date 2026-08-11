@@ -28,14 +28,9 @@ const OPTIONS: Option[] = [
     body: (
       <>
         Reorder waffle cones from{" "}
-        <code className="rounded-md bg-accent-tint px-1.5 py-0.5 font-mono text-[12px] text-accent-ink">
-          cone_king
-        </code>{" "}
+        <code className="rounded-md bg-accent-tint px-1.5 py-0.5 font-mono text-[12px] text-accent-ink">cone_king</code>{" "}
         with lead time{" "}
-        <code className="rounded-md bg-accent-tint px-1.5 py-0.5 font-mono text-[12px] text-accent-ink">
-          7_days
-        </code>
-        .
+        <code className="rounded-md bg-accent-tint px-1.5 py-0.5 font-mono text-[12px] text-accent-ink">7_days</code>.
       </>
     ),
     short: "Reorder from cone_king · 7-day lead",
@@ -84,7 +79,7 @@ export function RecommendationCard() {
   const [open, setOpen] = React.useState(false)
   const [accepted, setAccepted] = React.useState(false)
 
-  const active = OPTIONS[selected]
+  const active = OPTIONS[selected]!
   const others = OPTIONS.map((o, i) => ({ o, i })).filter(({ i }) => i !== selected)
 
   return (

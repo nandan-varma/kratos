@@ -42,12 +42,58 @@ type Row = {
 }
 
 const ROWS: Row[] = [
-  { id: "s-kim", name: "Sena Kim", role: "Staff Engineer", tags: ["Engineering", "Remote"], last: "2 hours ago", activity: "active", profile: "sena-kim" },
-  { id: "a-reyes", name: "Alex Reyes", role: "Product Designer", tags: ["Design"], last: "yesterday", activity: "active", profile: "alex-reyes" },
-  { id: "j-park", name: "Jae Park", role: "Engineering Manager", tags: ["Engineering", "Product"], last: "3 days ago", activity: "quiet", profile: "jae-park" },
-  { id: "m-diallo", name: "Mariam Diallo", role: "Growth Lead", tags: ["Growth"], last: "2 weeks ago", activity: "dormant" },
-  { id: "t-nakamura", name: "Tomo Nakamura", role: "Support Engineer", tags: ["Support", "Contractor"], last: "1 month ago", activity: "dormant", profile: "tomo-nakamura" },
-  { id: "l-fontaine", name: "Léa Fontaine", role: "Frontend Engineer", tags: ["Engineering", "Remote"], last: "no activity", activity: "none" },
+  {
+    id: "s-kim",
+    name: "Sena Kim",
+    role: "Staff Engineer",
+    tags: ["Engineering", "Remote"],
+    last: "2 hours ago",
+    activity: "active",
+    profile: "sena-kim",
+  },
+  {
+    id: "a-reyes",
+    name: "Alex Reyes",
+    role: "Product Designer",
+    tags: ["Design"],
+    last: "yesterday",
+    activity: "active",
+    profile: "alex-reyes",
+  },
+  {
+    id: "j-park",
+    name: "Jae Park",
+    role: "Engineering Manager",
+    tags: ["Engineering", "Product"],
+    last: "3 days ago",
+    activity: "quiet",
+    profile: "jae-park",
+  },
+  {
+    id: "m-diallo",
+    name: "Mariam Diallo",
+    role: "Growth Lead",
+    tags: ["Growth"],
+    last: "2 weeks ago",
+    activity: "dormant",
+  },
+  {
+    id: "t-nakamura",
+    name: "Tomo Nakamura",
+    role: "Support Engineer",
+    tags: ["Support", "Contractor"],
+    last: "1 month ago",
+    activity: "dormant",
+    profile: "tomo-nakamura",
+  },
+  {
+    id: "l-fontaine",
+    name: "Léa Fontaine",
+    role: "Frontend Engineer",
+    tags: ["Engineering", "Remote"],
+    last: "no activity",
+    activity: "none",
+  },
 ]
 
 function HeaderCell({
@@ -74,7 +120,16 @@ function HeaderCell({
             className={`transition-opacity duration-150 ${sort.key === sortKey ? "opacity-100" : "opacity-0"}`}
             style={{ transform: sort.key === sortKey && sort.dir === -1 ? "rotate(180deg)" : undefined }}
           >
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M12 5v14M5 12l7 7 7-7" />
             </svg>
           </span>
@@ -128,7 +183,12 @@ export function RecordsTable() {
             <tr>
               <th className="border-b border-line px-3 py-2">
                 <span className="flex items-center gap-2.5">
-                  <Checkbox checked={allSelected} mixed={partiallySelected} onChange={toggleAll} label="Select all rows" />
+                  <Checkbox
+                    checked={allSelected}
+                    mixed={partiallySelected}
+                    onChange={toggleAll}
+                    label="Select all rows"
+                  />
                   <span className="text-[11.5px] font-medium text-ink-3">Name</span>
                 </span>
               </th>
@@ -142,7 +202,10 @@ export function RecordsTable() {
               const rowSelected = selected.has(row.id)
               const activity = ACTIVITY[row.activity]
               return (
-                <tr key={row.id} className={`transition-colors duration-100 hover:bg-hover ${rowSelected ? "bg-accent-tint/40" : ""}`}>
+                <tr
+                  key={row.id}
+                  className={`transition-colors duration-100 hover:bg-hover ${rowSelected ? "bg-accent-tint/40" : ""}`}
+                >
                   <td className="border-b border-line px-3 py-2">
                     <span className="flex items-center gap-2.5">
                       <Checkbox checked={rowSelected} onChange={() => toggleRow(row.id)} label={`Select ${row.name}`} />
@@ -162,7 +225,9 @@ export function RecordsTable() {
                       ))}
                     </div>
                   </td>
-                  <td className={`border-b border-line px-3 py-2 text-[12px] ${row.last === "no activity" ? "text-ink-3" : "text-ink-2"}`}>
+                  <td
+                    className={`border-b border-line px-3 py-2 text-[12px] ${row.last === "no activity" ? "text-ink-3" : "text-ink-2"}`}
+                  >
                     {row.last}
                   </td>
                   <td className="border-b border-line px-3 py-2">
@@ -183,9 +248,7 @@ export function RecordsTable() {
               <td className="px-3 py-2 text-ink-3" colSpan={2}>
                 {selected.size} selected
               </td>
-              <td className="px-3 py-2 text-ink-3">
-                {ROWS.filter((r) => r.profile).length} profiles linked
-              </td>
+              <td className="px-3 py-2 text-ink-3">{ROWS.filter((r) => r.profile).length} profiles linked</td>
             </tr>
           </tfoot>
         </table>

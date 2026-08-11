@@ -476,7 +476,12 @@
       "type": "registry:block",
       "title": "Task Rows",
       "description": "Live agent task status rows — running, failed, completed.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence", "@kratos-orion/spinner-ring", "@kratos-orion/status-badge"],
+      "registryDependencies": [
+        "@kratos-orion/orion-theme",
+        "@kratos-orion/use-staged-sequence",
+        "@kratos-orion/spinner-ring",
+        "@kratos-orion/status-badge"
+      ],
       "files": [
         {
           "path": "registry/ui/task-rows.tsx",

@@ -1,4 +1,4 @@
-import { SpinnerRing } from "@/components/preview/spinner-ring";
+import { SpinnerRing } from "@/components/preview/spinner-ring"
 
 export function SpinnerRingDemo() {
   return (
@@ -6,5 +6,5 @@ export function SpinnerRingDemo() {
       <SpinnerRing active>2</SpinnerRing>
       <SpinnerRing>4</SpinnerRing>
     </div>
-  );
+  )
 }
