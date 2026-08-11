@@ -1,0 +1,18 @@
+---
+title: Sidebar Nav
+description: Workspace navigation with a gliding hover highlight and quick search.
+---
+
+import { SidebarNav } from "@/components/sidebar-nav";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/sidebar-nav.tsx")}>
+  <SidebarNav />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/sidebar-nav
+```

@@ -38,6 +38,10 @@
           "0%": { "opacity": "0", "transform": "scale(0.95)" },
           "100%": { "opacity": "1", "transform": "scale(1)" }
         },
+        "@keyframes eq-bounce": {
+          "0%, 100%": { "transform": "scaleY(0.35)" },
+          "50%": { "transform": "scaleY(1)" }
+        },
         "@layer components": {
           ".animated-underline": {
             "display": "inline-block",
@@ -222,7 +226,7 @@
       }
     },
     {
-      "name": "utils",
+      "name": "@kratos-orion/utils",
       "type": "registry:lib",
       "title": "Utils",
       "description": "The cn() utility for merging Tailwind classes.",
@@ -236,11 +240,11 @@
       ]
     },
     {
-      "name": "button",
+      "name": "@kratos-orion/button",
       "type": "registry:ui",
       "title": "Button",
       "description": "Displays a button or a component that looks like a button.",
-      "registryDependencies": ["utils"],
+      "registryDependencies": ["@kratos-orion/utils"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
       "files": [
         {
@@ -266,7 +270,7 @@
       "type": "registry:block",
       "title": "Empty State",
       "description": "A simple empty state with an icon, message, and call to action.",
-      "registryDependencies": ["button"],
+      "registryDependencies": ["@kratos-orion/button"],
       "dependencies": ["lucide-react"],
       "files": [
         {
@@ -293,7 +297,7 @@
       "type": "registry:ui",
       "title": "Thinking",
       "description": "Expandable agent trace with Steps, Reasoning, Search, and Coding variants.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
       "files": [
         {
           "path": "registry/ui/thinking.tsx",
@@ -311,6 +315,316 @@
         {
           "path": "registry/ui/streaming-text.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/use-staged-sequence",
+      "type": "registry:hook",
+      "title": "useStagedSequence",
+      "description": "Advances through a list of stage delays one at a time; returns the current stage index.",
+      "files": [
+        {
+          "path": "registry/hooks/use-staged-sequence.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-elapsed",
+      "type": "registry:hook",
+      "title": "useElapsed",
+      "description": "Ticks up in deciseconds and formats as a human-readable elapsed time string.",
+      "files": [
+        {
+          "path": "registry/hooks/use-elapsed.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-dark-mode",
+      "type": "registry:hook",
+      "title": "useDarkMode",
+      "description": "Tracks whether the .dark class is present on the document root.",
+      "files": [
+        {
+          "path": "registry/hooks/use-dark-mode.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A square checkbox control with checked, unchecked, and mixed states.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/tag",
+      "type": "registry:ui",
+      "title": "Tag",
+      "description": "A colored-dot label chip for categorizing table rows.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/tag.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "A three-bar confidence/signal meter.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/meter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/spinner-ring",
+      "type": "registry:ui",
+      "title": "SpinnerRing",
+      "description": "A circular progress spinner with an optional center label.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/spinner-ring.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/status-badge",
+      "type": "registry:ui",
+      "title": "StatusBadge",
+      "description": "A colored circular badge for success/failure states.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/status-badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search-list",
+      "type": "registry:ui",
+      "title": "Search",
+      "description": "Command search with live filtering and an empty state.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/search-list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Code streaming in line by line, with a live copy button.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:block",
+      "title": "Approval Card",
+      "description": "Human-in-the-loop questions with radio/checkbox options and a paged footer.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/approval-card.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "tool-chips",
+      "type": "registry:block",
+      "title": "Tool Chips",
+      "description": "Agent tool calls as compact, expandable rows with file-diff chips.",
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
+      "files": [
+        {
+          "path": "registry/ui/tool-chips.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "task-rows",
+      "type": "registry:block",
+      "title": "Task Rows",
+      "description": "Live agent task status rows — running, failed, completed.",
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence", "@kratos-orion/spinner-ring", "@kratos-orion/status-badge"],
+      "files": [
+        {
+          "path": "registry/ui/task-rows.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chat-composer",
+      "type": "registry:block",
+      "title": "Chat",
+      "description": "Tabbed chat panel with reasoning replies and a composer.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/chat-composer.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "recommendation-card",
+      "type": "registry:block",
+      "title": "Recommendation Card",
+      "description": "Agent suggestion with a confidence meter, alternatives drawer, and accept action.",
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/meter"],
+      "files": [
+        {
+          "path": "registry/ui/recommendation-card.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "context-cards",
+      "type": "registry:block",
+      "title": "Context Cards",
+      "description": "Retrieved knowledge chunks with source attribution chips.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/context-cards.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "diff-table",
+      "type": "registry:block",
+      "title": "Diff Table",
+      "description": "Proposed row-level changes sweeping through a table once.",
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
+      "files": [
+        {
+          "path": "registry/blocks/diff-table.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "records-table",
+      "type": "registry:block",
+      "title": "Records Table",
+      "description": "A sortable data grid with row selection, tags, and a calculation footer.",
+      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/checkbox", "@kratos-orion/tag"],
+      "files": [
+        {
+          "path": "registry/blocks/records-table.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "filter-table",
+      "type": "registry:block",
+      "title": "Filter Table",
+      "description": "Status chips that filter a task table in place.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/blocks/filter-table.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-nav",
+      "type": "registry:block",
+      "title": "Sidebar Nav",
+      "description": "Workspace navigation with a gliding hover highlight and quick search.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/blocks/sidebar-nav.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "insight-cards",
+      "type": "registry:block",
+      "title": "Insight Cards",
+      "description": "Paged agent insights with a scrub-ready line chart.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/blocks/insight-cards.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "fine-tune-card",
+      "type": "registry:block",
+      "title": "Fine-tune Card",
+      "description": "An inspector panel with scrubbable number fields and a segmented control.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/blocks/fine-tune-card.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "selection-actions",
+      "type": "registry:block",
+      "title": "Selection Actions",
+      "description": "A floating AI toolbar attached beneath selected text.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "registry/blocks/selection-actions.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "prompt-bar",
+      "type": "registry:block",
+      "title": "Prompt Bar",
+      "description": "A composer with @ sources, / commands, a model picker, and dictation.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/blocks/prompt-bar.tsx",
+          "type": "registry:block"
         }
       ]
     }

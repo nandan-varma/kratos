@@ -1,0 +1,18 @@
+---
+title: Diff Table
+description: Proposed row-level changes sweeping through a table once.
+---
+
+import { DiffTable } from "@/components/diff-table";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/diff-table.tsx")}>
+  <DiffTable />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/diff-table
+```

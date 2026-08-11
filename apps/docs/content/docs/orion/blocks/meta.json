@@ -1,4 +1,20 @@
 {
   "title": "Blocks",
-  "pages": ["empty-state"]
+  "pages": [
+    "empty-state",
+    "approval-card",
+    "recommendation-card",
+    "tool-chips",
+    "task-rows",
+    "chat-composer",
+    "context-cards",
+    "diff-table",
+    "records-table",
+    "filter-table",
+    "sidebar-nav",
+    "insight-cards",
+    "fine-tune-card",
+    "selection-actions",
+    "prompt-bar"
+  ]
 }

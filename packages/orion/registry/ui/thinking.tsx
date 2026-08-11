@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { useStagedSequence } from "@/hooks/use-staged-sequence"
+
 /**
  * THINKING — expandable agent trace, four variants
  *
@@ -14,16 +16,6 @@ import * as React from "react"
  */
 
 const STAGES = [800, 600, 1800, 2600, 1600]
-
-function useSequence(steps: number[]) {
-  const [stage, setStage] = React.useState(0)
-  React.useEffect(() => {
-    if (stage >= steps.length - 1) return
-    const t = setTimeout(() => setStage((s) => s + 1), steps[stage])
-    return () => clearTimeout(t)
-  }, [stage, steps])
-  return stage
-}
 
 type Row = {
   primary: string
@@ -124,7 +116,7 @@ function Dot({ tone }: { tone: string }) {
 const TONES = ["bg-accent", "bg-orange", "bg-green"]
 
 export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
-  const stage = useSequence(STAGES)
+  const stage = useStagedSequence(STAGES)
   const [manualExpanded, setManualExpanded] = React.useState<boolean | null>(
     null,
   )

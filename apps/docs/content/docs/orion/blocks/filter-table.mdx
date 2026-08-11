@@ -1,0 +1,18 @@
+---
+title: Filter Table
+description: Status chips that filter a task table in place.
+---
+
+import { FilterTable } from "@/components/filter-table";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/filter-table.tsx")}>
+  <FilterTable />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/filter-table
+```

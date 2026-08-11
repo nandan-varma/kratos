@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { useStagedSequence } from "@/hooks/use-staged-sequence"
-import { SpinnerRing } from "@/components/ui/spinner-ring"
-import { StatusBadge as Badge } from "@/components/ui/status-badge"
+import { SpinnerRing } from "@/components/preview/spinner-ring"
+import { StatusBadge as Badge } from "@/components/preview/status-badge"
 
 /**
  * TASK ROWS

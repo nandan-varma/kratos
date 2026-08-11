@@ -144,6 +144,14 @@
     transform: scale(1);
   }
 }
+@keyframes eq-bounce {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
 
 :root {
   --background: var(--page);
