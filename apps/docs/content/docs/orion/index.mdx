@@ -1,0 +1,30 @@
+---
+title: Orion
+description: The first codenamed design system in kratos.
+---
+
+Orion is a self-contained [shadcn](https://ui.shadcn.com) registry — its own components, hooks, and blocks, installable independently in any project.
+
+## Installation
+
+Add the registry to your project's `components.json`:
+
+```jsonc
+{
+  "registries": {
+    "@kratos-orion": "https://<your-domain>/r/orion/{name}.json"
+  }
+}
+```
+
+Then install any item by name:
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/button
+```
+
+## What's in Orion
+
+- [Components](/docs/orion/components) — UI primitives like `Button`.
+- [Hooks](/docs/orion/hooks) — utility hooks like `useCopyToClipboard`.
+- [Blocks](/docs/orion/blocks) — composed sections like `EmptyState`.

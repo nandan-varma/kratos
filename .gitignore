@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+.next/
+out/
+dist/
+.turbo/
+
+# generated registry output (rebuilt by `pnpm registry:build`)
+apps/docs/public/r/
+
+# fumadocs generated
+apps/docs/.source/
+
+# env
+.env
+.env.local
+.env*.local
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+.vercel

@@ -1,0 +1,18 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { ButtonDemo } from "@/components/examples/button-demo";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/preview/button.tsx")}>
+  <ButtonDemo />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/button
+```

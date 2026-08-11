@@ -1,0 +1,28 @@
+---
+title: Introduction
+description: kratos is a personal, self-hosted shadcn registry.
+---
+
+kratos hosts codenamed design systems as independent [shadcn](https://ui.shadcn.com) registries. Each codename is a fully self-contained component set you can install into any project with the `shadcn` CLI.
+
+## Codenames
+
+- [Orion](/docs/orion) — the first design system.
+
+## Installing from a codename
+
+Add the registry to your project's `components.json`:
+
+```jsonc
+{
+  "registries": {
+    "@kratos-orion": "https://<your-domain>/r/orion/{name}.json"
+  }
+}
+```
+
+Then install any item:
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/button
+```
