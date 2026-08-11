@@ -30,6 +30,14 @@
         "@keyframes spin": {
           "100%": { "transform": "rotate(1turn)" }
         },
+        "@keyframes stream-in": {
+          "0%": { "opacity": "0", "filter": "blur(4px)" },
+          "100%": { "opacity": "1", "filter": "blur(0px)" }
+        },
+        "@keyframes pop-in": {
+          "0%": { "opacity": "0", "transform": "scale(0.95)" },
+          "100%": { "opacity": "1", "transform": "scale(1)" }
+        },
         "@layer components": {
           ".animated-underline": {
             "display": "inline-block",
@@ -289,6 +297,19 @@
       "files": [
         {
           "path": "registry/ui/thinking.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:ui",
+      "title": "Streaming Text",
+      "description": "Streamed answer with inline sources, actions, and follow-ups.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/streaming-text.tsx",
           "type": "registry:ui"
         }
       ]

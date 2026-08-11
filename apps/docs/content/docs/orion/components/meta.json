@@ -1,4 +1,4 @@
 {
   "title": "Components",
-  "pages": ["button", "loading-state", "thinking"]
+  "pages": ["button", "loading-state", "thinking", "streaming-text"]
 }
