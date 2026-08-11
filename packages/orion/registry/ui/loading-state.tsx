@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { Shimmer } from "@/components/ui/shimmer"
+import { Shimmer } from "@/registry/ui/shimmer"
 
 /**
  * Pixel-grid loader for long-running work.

@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { SpinnerRing } from "@/components/ui/spinner-ring"
-import { StatusBadge as Badge } from "@/components/ui/status-badge"
-import { useStagedSequence } from "@/hooks/use-staged-sequence"
+import { SpinnerRing } from "@/registry/ui/spinner-ring"
+import { StatusBadge as Badge } from "@/registry/ui/status-badge"
+import { useStagedSequence } from "@/registry/hooks/use-staged-sequence"
 
 /**
  * TASK ROWS

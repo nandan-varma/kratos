@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { SegmentedControl } from "@/components/ui/segmented-control"
-import { Shimmer } from "@/components/ui/shimmer"
+import { SegmentedControl } from "@/registry/ui/segmented-control"
+import { Shimmer } from "@/registry/ui/shimmer"
 
 /**
  * FINE-TUNE CARD — compact interactive inspector.

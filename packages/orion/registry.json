@@ -11,36 +11,74 @@
       "files": [],
       "css": {
         "@keyframes pixel-on": {
-          "0%, 100%": { "opacity": "0.15" },
-          "18%, 42%": { "opacity": "1" },
-          "62%": { "opacity": "0.15" }
+          "0%, 100%": {
+            "opacity": "0.15"
+          },
+          "18%, 42%": {
+            "opacity": "1"
+          },
+          "62%": {
+            "opacity": "0.15"
+          }
         },
         "@keyframes shimmer-text": {
-          "0%": { "background-position": "150% center" },
-          "100%": { "background-position": "-50% center" }
+          "0%": {
+            "background-position": "150% center"
+          },
+          "100%": {
+            "background-position": "-50% center"
+          }
         },
         "@keyframes fade-in": {
-          "0%": { "opacity": "0" },
-          "100%": { "opacity": "1" }
+          "0%": {
+            "opacity": "0"
+          },
+          "100%": {
+            "opacity": "1"
+          }
         },
         "@keyframes fade-up": {
-          "0%": { "opacity": "0", "transform": "translateY(8px)" },
-          "100%": { "opacity": "1", "transform": "translateY(0px)" }
+          "0%": {
+            "opacity": "0",
+            "transform": "translateY(8px)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "translateY(0px)"
+          }
         },
         "@keyframes spin": {
-          "100%": { "transform": "rotate(1turn)" }
+          "100%": {
+            "transform": "rotate(1turn)"
+          }
         },
         "@keyframes stream-in": {
-          "0%": { "opacity": "0", "filter": "blur(4px)" },
-          "100%": { "opacity": "1", "filter": "blur(0px)" }
+          "0%": {
+            "opacity": "0",
+            "filter": "blur(4px)"
+          },
+          "100%": {
+            "opacity": "1",
+            "filter": "blur(0px)"
+          }
         },
         "@keyframes pop-in": {
-          "0%": { "opacity": "0", "transform": "scale(0.95)" },
-          "100%": { "opacity": "1", "transform": "scale(1)" }
+          "0%": {
+            "opacity": "0",
+            "transform": "scale(0.95)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          }
         },
         "@keyframes eq-bounce": {
-          "0%, 100%": { "transform": "scaleY(0.35)" },
-          "50%": { "transform": "scaleY(1)" }
+          "0%, 100%": {
+            "transform": "scaleY(0.35)"
+          },
+          "50%": {
+            "transform": "scaleY(1)"
+          }
         },
         "@layer components": {
           ".animated-underline": {
@@ -243,12 +281,15 @@
       }
     },
     {
-      "name": "@kratos-orion/utils",
+      "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
       "description": "The cn() utility for merging Tailwind classes.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
-      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/lib/utils.ts",
@@ -257,12 +298,17 @@
       ]
     },
     {
-      "name": "@kratos-orion/button",
+      "name": "button",
       "type": "registry:ui",
       "title": "Button",
       "description": "Displays a button or a component that looks like a button.",
-      "registryDependencies": ["@kratos-orion/utils"],
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/ui/button.tsx",
@@ -287,8 +333,12 @@
       "type": "registry:block",
       "title": "Empty State",
       "description": "A simple empty state with an icon, message, and call to action.",
-      "registryDependencies": ["@kratos-orion/button"],
-      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/blocks/empty-state.tsx",
@@ -301,7 +351,10 @@
       "type": "registry:ui",
       "title": "Loading State",
       "description": "Pixel-grid loader with shimmer text and elapsed time.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme",
+        "shimmer"
+      ],
       "files": [
         {
           "path": "registry/ui/loading-state.tsx",
@@ -314,7 +367,11 @@
       "type": "registry:ui",
       "title": "Thinking",
       "description": "Expandable agent trace with Steps, Reasoning, Search, and Coding variants.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
+      "registryDependencies": [
+        "orion-theme",
+        "use-staged-sequence",
+        "shimmer"
+      ],
       "files": [
         {
           "path": "registry/ui/thinking.tsx",
@@ -327,7 +384,9 @@
       "type": "registry:ui",
       "title": "Streaming Text",
       "description": "Streamed answer with inline sources, actions, and follow-ups.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/streaming-text.tsx",
@@ -336,7 +395,7 @@
       ]
     },
     {
-      "name": "@kratos-orion/use-staged-sequence",
+      "name": "use-staged-sequence",
       "type": "registry:hook",
       "title": "useStagedSequence",
       "description": "Advances through a list of stage delays one at a time; returns the current stage index.",
@@ -372,11 +431,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/checkbox",
+      "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A square checkbox control with checked, unchecked, and mixed states.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/checkbox.tsx",
@@ -385,11 +446,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/tag",
+      "name": "tag",
       "type": "registry:ui",
       "title": "Tag",
       "description": "A colored-dot label chip for categorizing table rows.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/tag.tsx",
@@ -398,11 +461,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/meter",
+      "name": "meter",
       "type": "registry:ui",
       "title": "Meter",
       "description": "A three-bar confidence/signal meter.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/meter.tsx",
@@ -411,11 +476,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/spinner-ring",
+      "name": "spinner-ring",
       "type": "registry:ui",
       "title": "SpinnerRing",
       "description": "A circular progress spinner with an optional center label.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/spinner-ring.tsx",
@@ -424,11 +491,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/status-badge",
+      "name": "status-badge",
       "type": "registry:ui",
       "title": "StatusBadge",
       "description": "A colored circular badge for success/failure states.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/status-badge.tsx",
@@ -437,11 +506,14 @@
       ]
     },
     {
-      "name": "@kratos-orion/badge",
+      "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
       "description": "A compact label chip for filters, statuses, and countable tags.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme",
+        "dot"
+      ],
       "files": [
         {
           "path": "registry/ui/badge.tsx",
@@ -450,11 +522,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/dot",
+      "name": "dot",
       "type": "registry:ui",
       "title": "Dot",
       "description": "A small colored indicator dot for status markers, filters, and embellishments.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/dot.tsx",
@@ -463,11 +537,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/shimmer",
+      "name": "shimmer",
       "type": "registry:ui",
       "title": "Shimmer",
       "description": "Animated gradient-sweep text for in-progress labels.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/shimmer.tsx",
@@ -476,11 +552,13 @@
       ]
     },
     {
-      "name": "@kratos-orion/segmented-control",
+      "name": "segmented-control",
       "type": "registry:ui",
       "title": "SegmentedControl",
       "description": "A pill-style tab switcher with a sliding highlight that tracks the active segment.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/segmented-control.tsx",
@@ -493,7 +571,9 @@
       "type": "registry:ui",
       "title": "Search",
       "description": "Command search with live filtering and an empty state.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/search-list.tsx",
@@ -506,7 +586,9 @@
       "type": "registry:ui",
       "title": "Code Block",
       "description": "Code streaming in line by line, with a live copy button.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/code-block.tsx",
@@ -519,7 +601,9 @@
       "type": "registry:block",
       "title": "Approval Card",
       "description": "Human-in-the-loop questions with radio/checkbox options and a paged footer.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/approval-card.tsx",
@@ -532,7 +616,10 @@
       "type": "registry:block",
       "title": "Tool Chips",
       "description": "Agent tool calls as compact, expandable rows with file-diff chips.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
+      "registryDependencies": [
+        "orion-theme",
+        "use-staged-sequence"
+      ],
       "files": [
         {
           "path": "registry/ui/tool-chips.tsx",
@@ -546,10 +633,10 @@
       "title": "Task Rows",
       "description": "Live agent task status rows — running, failed, completed.",
       "registryDependencies": [
-        "@kratos-orion/orion-theme",
-        "@kratos-orion/use-staged-sequence",
-        "@kratos-orion/spinner-ring",
-        "@kratos-orion/status-badge"
+        "orion-theme",
+        "use-staged-sequence",
+        "spinner-ring",
+        "status-badge"
       ],
       "files": [
         {
@@ -563,7 +650,11 @@
       "type": "registry:block",
       "title": "Chat",
       "description": "Tabbed chat panel with reasoning replies and a composer.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme",
+        "segmented-control",
+        "shimmer"
+      ],
       "files": [
         {
           "path": "registry/ui/chat-composer.tsx",
@@ -576,7 +667,10 @@
       "type": "registry:block",
       "title": "Recommendation Card",
       "description": "Agent suggestion with a confidence meter, alternatives drawer, and accept action.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/meter"],
+      "registryDependencies": [
+        "orion-theme",
+        "meter"
+      ],
       "files": [
         {
           "path": "registry/ui/recommendation-card.tsx",
@@ -589,7 +683,9 @@
       "type": "registry:block",
       "title": "Context Cards",
       "description": "Retrieved knowledge chunks with source attribution chips.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/ui/context-cards.tsx",
@@ -602,7 +698,11 @@
       "type": "registry:block",
       "title": "Diff Table",
       "description": "Proposed row-level changes sweeping through a table once.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/use-staged-sequence"],
+      "registryDependencies": [
+        "orion-theme",
+        "use-staged-sequence",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/blocks/diff-table.tsx",
@@ -615,7 +715,11 @@
       "type": "registry:block",
       "title": "Records Table",
       "description": "A sortable data grid with row selection, tags, and a calculation footer.",
-      "registryDependencies": ["@kratos-orion/orion-theme", "@kratos-orion/checkbox", "@kratos-orion/tag"],
+      "registryDependencies": [
+        "orion-theme",
+        "checkbox",
+        "tag"
+      ],
       "files": [
         {
           "path": "registry/blocks/records-table.tsx",
@@ -628,7 +732,10 @@
       "type": "registry:block",
       "title": "Filter Table",
       "description": "Status chips that filter a task table in place.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme",
+        "badge"
+      ],
       "files": [
         {
           "path": "registry/blocks/filter-table.tsx",
@@ -641,7 +748,9 @@
       "type": "registry:block",
       "title": "Sidebar Nav",
       "description": "Workspace navigation with a gliding hover highlight and quick search.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/blocks/sidebar-nav.tsx",
@@ -654,7 +763,9 @@
       "type": "registry:block",
       "title": "Insight Cards",
       "description": "Paged agent insights with a scrub-ready line chart.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/blocks/insight-cards.tsx",
@@ -667,7 +778,11 @@
       "type": "registry:block",
       "title": "Fine-tune Card",
       "description": "An inspector panel with scrubbable number fields and a segmented control.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme",
+        "segmented-control",
+        "shimmer"
+      ],
       "files": [
         {
           "path": "registry/blocks/fine-tune-card.tsx",
@@ -680,8 +795,13 @@
       "type": "registry:block",
       "title": "Selection Actions",
       "description": "A floating AI toolbar attached beneath selected text.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
-      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "orion-theme",
+        "shimmer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/blocks/selection-actions.tsx",
@@ -694,7 +814,9 @@
       "type": "registry:block",
       "title": "Prompt Bar",
       "description": "A composer with @ sources, / commands, a model picker, and dictation.",
-      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "registryDependencies": [
+        "orion-theme"
+      ],
       "files": [
         {
           "path": "registry/blocks/prompt-bar.tsx",

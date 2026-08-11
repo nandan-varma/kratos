@@ -17,7 +17,7 @@
 
 import type React from "react"
 
-import { Dot } from "@/components/ui/dot"
+import { Dot } from "@/registry/ui/dot"
 
 const STATUS_STYLES = {
   orange: "bg-orange-tint text-orange",

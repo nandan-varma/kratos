@@ -1,7 +1,7 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import { useStagedSequence } from "@/hooks/use-staged-sequence"
+import { Badge } from "@/registry/ui/badge"
+import { useStagedSequence } from "@/registry/hooks/use-staged-sequence"
 
 /**
  * DIFF TABLE

@@ -2,7 +2,7 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/registry/lib/utils"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control text-[12.5px] font-medium transition-[background-color,color,transform] duration-100 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 active:scale-[0.96]",

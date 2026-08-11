@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Meter } from "@/components/ui/meter"
+import { Meter } from "@/registry/ui/meter"
 
 /**
  * RECOMMENDATION CARD

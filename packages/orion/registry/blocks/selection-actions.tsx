@@ -3,7 +3,7 @@
 import { Check, ChevronRight, MessageCircleQuestion, RefreshCw, Scissors, Smile, Sparkles, Type, X } from "lucide-react"
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 
-import { Shimmer } from "@/components/ui/shimmer"
+import { Shimmer } from "@/registry/ui/shimmer"
 
 /**
  * SELECTION ACTIONS

@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import { Checkbox } from "@/components/ui/checkbox"
-import { Tag, type TagTone } from "@/components/ui/tag"
+import { Checkbox } from "@/registry/ui/checkbox"
+import { Tag, type TagTone } from "@/registry/ui/tag"
 
 /**
  * RECORDS TABLE

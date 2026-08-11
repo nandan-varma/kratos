@@ -2,9 +2,9 @@
 
 import { useLayoutEffect, useRef, useState } from "react"
 
-import { Shimmer } from "@/components/ui/shimmer"
+import { Shimmer } from "@/registry/ui/shimmer"
 
-import { useStagedSequence } from "@/hooks/use-staged-sequence"
+import { useStagedSequence } from "@/registry/hooks/use-staged-sequence"
 
 /**
  * THINKING — expandable agent trace, four variants
