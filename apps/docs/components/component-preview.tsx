@@ -12,7 +12,7 @@ export function ComponentPreview({
   return (
     <Tabs items={["Preview", "Code"]}>
       <Tab value="Preview">
-        <div className="flex min-h-[240px] items-center justify-center rounded-lg border p-10">
+        <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden rounded-card bg-canvas p-10 shadow-hairline">
           {children}
         </div>
       </Tab>

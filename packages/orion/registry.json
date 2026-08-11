@@ -4,11 +4,22 @@
   "homepage": "https://github.com/nandan-varma/kratos",
   "items": [
     {
-      "name": "theme",
+      "name": "orion-theme",
       "type": "registry:theme",
       "title": "Orion Theme",
       "description": "Color palette, fonts, radius and shadow tokens shared by every Orion component.",
       "files": [],
+      "css": {
+        "@keyframes pixel-on": {
+          "0%, 100%": { "opacity": "0.15" },
+          "18%, 42%": { "opacity": "1" },
+          "62%": { "opacity": "0.15" }
+        },
+        "@keyframes shimmer-text": {
+          "0%": { "background-position": "150% center" },
+          "100%": { "background-position": "-50% center" }
+        }
+      },
       "cssVars": {
         "theme": {
           "font-sans": "var(--font-inter), ui-sans-serif, system-ui, sans-serif",
@@ -174,7 +185,7 @@
       "type": "registry:lib",
       "title": "Utils",
       "description": "The cn() utility for merging Tailwind classes.",
-      "registryDependencies": ["theme"],
+      "registryDependencies": ["@kratos-orion/orion-theme"],
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
@@ -220,6 +231,19 @@
         {
           "path": "registry/blocks/empty-state.tsx",
           "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "loading-state",
+      "type": "registry:ui",
+      "title": "Loading State",
+      "description": "Pixel-grid loader with shimmer text and elapsed time.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/loading-state.tsx",
+          "type": "registry:ui"
         }
       ]
     }

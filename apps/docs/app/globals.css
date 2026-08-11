@@ -63,6 +63,41 @@
   --shadow-raised: var(--shadow-raised);
   --shadow-overlay: var(--shadow-overlay);
   --shadow-inset-field: var(--shadow-inset-field);
+  --ring: var(--ring);
+  --input: var(--input);
+  --border: var(--border);
+  --destructive: var(--destructive);
+  --muted-foreground: var(--muted-foreground);
+  --muted: var(--muted);
+  --secondary-foreground: var(--secondary-foreground);
+  --secondary: var(--secondary);
+  --primary-foreground: var(--primary-foreground);
+  --primary: var(--primary);
+  --popover-foreground: var(--popover-foreground);
+  --popover: var(--popover);
+  --card-foreground: var(--card-foreground);
+  --card: var(--card);
+  --foreground: var(--foreground);
+  --background: var(--background);
+  @keyframes pixel-on {
+  0%, 100% {
+    opacity: 0.15;
+    }
+  18%, 42% {
+    opacity: 1;
+    }
+  62% {
+    opacity: 0.15;
+    }
+  }
+  @keyframes shimmer-text {
+  0% {
+    background-position: 150% center;
+    }
+  100% {
+    background-position: -50% center;
+    }
+  }
 }
 
 :root {
