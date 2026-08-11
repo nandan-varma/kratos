@@ -156,7 +156,7 @@
   }
 }
 
-:root {
+:where(:root, .dark) {
   --background: var(--page);
   --foreground: var(--ink);
   --card: var(--surface);
@@ -173,6 +173,9 @@
   --border: var(--line);
   --input: var(--line);
   --ring: var(--accent);
+}
+
+:root {
   --radius: 0.625rem;
   --page: #fafafb;
   --canvas: #f1f2f3;
@@ -210,22 +213,6 @@
 }
 
 .dark {
-  --background: var(--page);
-  --foreground: var(--ink);
-  --card: var(--surface);
-  --card-foreground: var(--ink);
-  --popover: var(--surface);
-  --popover-foreground: var(--ink);
-  --primary: var(--ink);
-  --primary-foreground: var(--page);
-  --secondary: var(--field);
-  --secondary-foreground: var(--ink);
-  --muted: var(--canvas);
-  --muted-foreground: var(--ink-2);
-  --destructive: var(--red);
-  --border: var(--line);
-  --input: var(--line);
-  --ring: var(--accent);
   --page: #17181a;
   --canvas: #1c1d1f;
   --surface: #232427;

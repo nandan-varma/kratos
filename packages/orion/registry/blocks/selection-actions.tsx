@@ -84,7 +84,7 @@ export function SelectionActions() {
 
   useLayoutEffect(() => {
     place()
-  }, [mode, place])
+  }, [place])
 
   useEffect(() => {
     const host = hostRef.current

@@ -170,8 +170,14 @@ export function RecordsTable() {
   const toggleAll = () =>
     setSelected((current) => {
       const next = new Set(current)
-      if (allSelected) visibleRows.forEach((r) => next.delete(r.id))
-      else visibleRows.forEach((r) => next.add(r.id))
+      if (allSelected)
+        visibleRows.forEach((r) => {
+          next.delete(r.id)
+        })
+      else
+        visibleRows.forEach((r) => {
+          next.add(r.id)
+        })
       return next
     })
 

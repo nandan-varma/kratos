@@ -154,7 +154,7 @@ export function SidebarNav() {
         </span>
       </button>
 
-      <div ref={navRef} onMouseLeave={() => setHovered(null)} className="relative flex flex-col gap-2">
+      <nav ref={navRef} onMouseLeave={() => setHovered(null)} className="relative flex flex-col gap-2">
         <span
           aria-hidden
           className="pointer-events-none absolute inset-x-0 rounded-control bg-hover/70"
@@ -231,7 +231,7 @@ export function SidebarNav() {
             </div>
           </div>
         ))}
-      </div>
+      </nav>
     </div>
   )
 }

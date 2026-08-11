@@ -56,18 +56,21 @@ const SOURCES = [
 function SourceChip() {
   const source = SOURCES[0]
   return (
-    <a
-      href={source.href}
-      target="_blank"
-      rel="noreferrer"
+    <span
+      role="link"
+      tabIndex={0}
+      onClick={() => window.open(source.href, "_blank", "noreferrer")}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") window.open(source.href, "_blank", "noreferrer")
+      }}
       className="ml-0 mr-1 inline-flex h-4.5 translate-y-[-1px] items-center gap-1 rounded-[5px]
       bg-inset pr-[3px] pl-[3px] align-middle font-mono text-[10.5px] text-ink-2 shadow-hairline
-      transition-colors duration-150 hover:bg-hover hover:text-ink"
+      transition-colors duration-150 hover:bg-hover hover:text-ink cursor-pointer"
       style={{ animation: "pop-in 250ms cubic-bezier(0.23,1,0.32,1) both" }}
     >
       <img src={source.image} alt="" className="size-3 rounded-[3px]" />
       <span>{source.domain}</span>
-    </a>
+    </span>
   )
 }
 
@@ -183,20 +186,22 @@ export function StreamingText() {
         }}
       >
         <div className="overflow-hidden">
-          {/* pi-lens-ignore: no-nested-links */}
           <div className="mt-1.5 flex flex-col rounded-[10px] bg-inset p-1 shadow-hairline">
             {SOURCES.map((source) => (
-              <a
+              <span
                 key={source.domain}
-                href={source.href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 rounded-[6px] px-1.5 py-1 text-[12px] text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink"
+                role="link"
+                tabIndex={0}
+                onClick={() => window.open(source.href, "_blank", "noreferrer")}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") window.open(source.href, "_blank", "noreferrer")
+                }}
+                className="flex items-center gap-2 rounded-[6px] px-1.5 py-1 text-[12px] text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink cursor-pointer"
               >
                 <img src={source.image} alt="" className="size-4 rounded-[4px]" />
                 <span className="animated-underline">{source.name}</span>
                 <span className="ml-auto font-mono text-[10.5px] text-ink-3">{source.domain}</span>
-              </a>
+              </span>
             ))}
           </div>
         </div>

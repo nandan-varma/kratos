@@ -250,8 +250,12 @@ export function ChatComposer() {
       {/* composer */}
       <div className="mt-auto shrink-0 p-1.5">
         <div
-          role="presentation"
+          role="button"
+          tabIndex={-1}
           onClick={() => inputRef.current?.focus()}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") inputRef.current?.focus()
+          }}
           className="flex cursor-text flex-col gap-2 rounded-control border border-line bg-field p-2.5 shadow-hairline transition-[border-color,box-shadow] duration-150 focus-within:border-line-strong focus-within:shadow-btn"
         >
           <input

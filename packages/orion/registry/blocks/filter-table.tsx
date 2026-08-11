@@ -53,7 +53,6 @@ export function FilterTable() {
         aria-label="Scrollable task table"
         className="overflow-x-auto rounded-card bg-surface shadow-card"
         role="region"
-        tabIndex={0}
         style={{ scrollbarWidth: "none" }}
       >
         <div className="min-w-[420px]">

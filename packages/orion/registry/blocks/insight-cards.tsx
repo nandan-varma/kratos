@@ -66,8 +66,8 @@ function MiniChart({
         {hover !== null && (
           <>
             <line
-              x1={points[hover]![0]}
-              x2={points[hover]![0]}
+              x1={points[hover]?.[0] ?? 0}
+              x2={points[hover]?.[0] ?? 0}
               y1={0}
               y2={height}
               stroke="var(--line-strong)"
@@ -75,8 +75,8 @@ function MiniChart({
               strokeDasharray="3 3"
             />
             <circle
-              cx={points[hover]![0]}
-              cy={points[hover]![1]}
+              cx={points[hover]?.[0] ?? 0}
+              cy={points[hover]?.[1] ?? 0}
               r={3.5}
               fill={color}
               stroke="var(--surface)"
@@ -90,7 +90,7 @@ function MiniChart({
           className="pointer-events-none absolute top-0 -translate-x-1/2 rounded-control bg-tooltip-bg px-2 py-1 text-[11px] font-medium text-tooltip-fg shadow-raised"
           style={{ left: `${Math.min(Math.max((hover / (values.length - 1)) * 100, 15), 85)}%` }}
         >
-          {formatValue(values[hover]!)}
+          {formatValue(values[hover] ?? 0)}
         </div>
       )}
     </div>

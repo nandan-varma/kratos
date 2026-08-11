@@ -170,7 +170,7 @@ export function FineTuneCard() {
             value: s,
             node: <SegmentIcon kind={s} />,
           }))}
-          value={SEGMENTS[seg]!}
+          value={SEGMENTS[seg] ?? SEGMENTS[0]}
           onChangeAction={(v) => setSeg(SEGMENTS.indexOf(v))}
         />
         <div className="grid min-w-0 grid-cols-2 gap-2">
