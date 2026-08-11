@@ -1,0 +1,28 @@
+---
+title: Thinking
+description: Expandable agent trace with Steps, Reasoning, Search, and Coding variants.
+---
+
+import { ThinkingDemo } from "@/components/examples/thinking-demo";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/preview/thinking.tsx")}>
+  <ThinkingDemo />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/thinking
+```
+
+## Usage
+
+```tsx
+import { ThinkingState } from "@/components/ui/thinking";
+
+<ThinkingState variant="Steps" />
+```
+
+`variant` accepts `"Steps"`, `"Reasoning"`, `"Search"`, or `"Coding"`. The trace runs once (shimmering label → settled state), then stays expandable via the header button.

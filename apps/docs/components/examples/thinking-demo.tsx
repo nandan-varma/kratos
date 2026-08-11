@@ -1,20 +1,17 @@
 "use client";
 
 import * as React from "react";
-import {
-  LoadingState,
-  type LoadingStateVariant,
-} from "@/components/preview/loading-state";
+import { ThinkingState } from "@/components/preview/thinking";
 import { cn } from "@/lib/utils";
 
-const VARIANTS: LoadingStateVariant[] = ["Drive", "Dots", "Orbit"];
+const VARIANTS = ["Steps", "Reasoning", "Search", "Coding"];
 
-export function LoadingStateDemo() {
-  const [variant, setVariant] = React.useState<LoadingStateVariant>("Drive");
+export function ThinkingDemo() {
+  const [variant, setVariant] = React.useState("Steps");
 
   return (
     <div className="relative flex w-full flex-col items-center gap-8">
-      <LoadingState variant={variant} />
+      <ThinkingState variant={variant} />
       <div className="flex rounded-full bg-field p-0.5">
         {VARIANTS.map((v) => (
           <button
