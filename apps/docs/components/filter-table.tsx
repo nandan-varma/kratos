@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { Badge } from "@/components/preview/badge"
+
 /**
  * FILTER TABLE
  * Status chips directly filter a task table.
@@ -40,23 +42,9 @@ export function FilterTable() {
         {FILTERS.map((f) => {
           const active = filter === f.key
           return (
-            <button
-              key={f.key}
-              type="button"
-              aria-pressed={active}
-              onClick={() => setFilter(f.key)}
-              className={`flex h-6.5 shrink-0 items-center gap-1.5 rounded-full px-2.5 text-[12px] font-medium transition-[background-color,box-shadow,color] duration-200 ${
-                active ? "bg-surface text-ink shadow-btn" : "text-ink-2 hover:bg-hover"
-              }`}
-            >
-              {f.dot && <span className="size-1.5 rounded-full" style={{ background: f.dot }} />}
+            <Badge key={f.key} active={active} dotColor={f.dot} count={f.count} onClick={() => setFilter(f.key)}>
               {f.label}
-              <span
-                className={`rounded-[4px] px-1 text-[10.5px] tabular-nums ${active ? "bg-field text-ink-2" : "text-ink-3"}`}
-              >
-                {f.count}
-              </span>
-            </button>
+            </Badge>
           )
         })}
       </div>
@@ -93,11 +81,12 @@ export function FilterTable() {
                     <span className="truncate font-medium text-ink">{row.task}</span>
                     <span className="text-ink-2 tabular-nums">{row.date}</span>
                     <span>
-                      <span
-                        className={`inline-flex h-5 items-center rounded-[5px] px-1.5 text-[11px] font-medium ${pill.className}`}
+                      <Badge
+                        variant="status"
+                        tone={row.status === "todo" ? "orange" : row.status === "progress" ? "accent" : "green"}
                       >
                         {pill.label}
-                      </span>
+                      </Badge>
                     </span>
                     <span className="truncate text-ink-2">{row.owner}</span>
                   </div>

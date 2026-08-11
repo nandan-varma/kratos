@@ -2,6 +2,9 @@
 
 import * as React from "react"
 
+import { SegmentedControl } from "@/components/preview/segmented-control"
+import { Shimmer } from "@/components/preview/shimmer"
+
 /**
  * FINE-TUNE CARD — compact interactive inspector.
  * Number fields scrub: drag the label to adjust, use up/down arrow
@@ -153,46 +156,23 @@ export function FineTuneCard() {
                 <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" />
               </svg>
             </span>
-            <span
-              className="bg-clip-text text-[12px] font-medium text-transparent"
-              style={{
-                backgroundImage: "linear-gradient(90deg, var(--accent) 35%, var(--accent-ink) 50%, var(--accent) 65%)",
-                backgroundSize: "200% 100%",
-                animation: "shimmer-text 1.4s linear infinite",
-              }}
-            >
+            <Shimmer variant="accent" className="text-[12px]">
               Adjust
-            </span>
+            </Shimmer>
           </span>
         )}
       </div>
 
       <div className="primitive-card-pad flex flex-col gap-2 border-b border-line">
         <p className="text-[12.5px] font-medium text-ink">Layout</p>
-        <div className="relative grid grid-cols-3 rounded-control bg-field p-0.5">
-          <span
-            aria-hidden
-            className="absolute inset-y-0.5 rounded-[6px] bg-surface shadow-btn transition-transform duration-300"
-            style={{
-              width: "calc((100% - 4px) / 3)",
-              left: 2,
-              transform: `translateX(${seg * 100}%)`,
-              transitionTimingFunction: "cubic-bezier(0.23, 1, 0.32, 1)",
-            }}
-          />
-          {SEGMENTS.map((s, i) => (
-            <button
-              key={s}
-              type="button"
-              aria-label={`${s} layout`}
-              aria-pressed={i === seg}
-              onClick={() => setSeg(i)}
-              className={`relative z-10 flex h-6 items-center justify-center transition-colors duration-200 ${i === seg ? "text-accent" : "text-ink-3"}`}
-            >
-              <SegmentIcon kind={s} />
-            </button>
-          ))}
-        </div>
+        <SegmentedControl
+          segments={SEGMENTS.map((s) => ({
+            value: s,
+            node: <SegmentIcon kind={s} />,
+          }))}
+          value={SEGMENTS[seg]!}
+          onChangeAction={(v) => setSeg(SEGMENTS.indexOf(v))}
+        />
         <div className="grid min-w-0 grid-cols-2 gap-2">
           <ScrubField label="W" value={width} onChange={setWidth} min={40} max={999} active={width !== 280} />
           <ScrubField label="H" value={height} onChange={setHeight} min={24} max={999} active={height !== 88} />

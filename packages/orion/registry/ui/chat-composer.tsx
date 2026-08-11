@@ -2,12 +2,50 @@
 
 import * as React from "react"
 
+import { SegmentedControl } from "@/components/ui/segmented-control"
+import { Shimmer } from "@/components/ui/shimmer"
+
 /**
  * CHAT — interactive panel with tabs, replies, and composer. The reply
  * sequence begins only after the user sends.
  */
 
-type Phase = "idle" | "sent" | "reply1" | "reply2" | "done"
+type Phase = "idle" | "sent" | "typing" | "reply1" | "reply2" | "done"
+
+const TAB_DATA = {
+  Flavors: {
+    submitted: "Compare mint chip to last summer",
+    repl1: {
+      label: "Sales History",
+      sub: "Flavor Data",
+      time: "4s",
+      body: "Pulled 3 summers of mint chip sales for comparison. Sales are up 12% YoY with strongest weekends in July.",
+    },
+    repl2: {
+      label: "Seasonal Trend",
+      sub: "Forecast",
+      time: "3s",
+      body: 'Mint chip peaks in late spring. Consider a "Mint Chip Summer" promo tied to the June heatwave forecast.',
+    },
+  },
+  Suppliers: {
+    submitted: "Who supplies our mint?",
+    repl1: {
+      label: "Vendor Lookup",
+      sub: "Supply Chain",
+      time: "3s",
+      body: "Mint extract comes from Alpine Flavors Inc (contract #AF-2024-112). Current lead time is 14 days.",
+    },
+    repl2: {
+      label: "Price Alert",
+      sub: "Procurement",
+      time: "2s",
+      body: "Alpine Flavors flagged a 7% price increase starting next quarter. Lock in current rates before Nov 1.",
+    },
+  },
+} as const
+
+type TabKey = keyof typeof TAB_DATA
 
 function Section({
   label,
@@ -45,16 +83,23 @@ function Section({
 }
 
 export function ChatComposer() {
-  const [phase, setPhase] = React.useState<Phase>("done")
+  const [phase, setPhase] = React.useState<Phase>("idle")
   const [draft, setDraft] = React.useState("")
-  const [submitted, setSubmitted] = React.useState("Compare mint chip to last summer")
-  const [tab, setTab] = React.useState("Flavors")
+  const [tab, setTab] = React.useState<TabKey>("Flavors")
   const inputRef = React.useRef<HTMLInputElement>(null)
+  const data = TAB_DATA[tab]
+
+  // auto-trigger on mount for docs demo
+  React.useEffect(() => {
+    const t = setTimeout(() => setPhase("sent"), 300)
+    return () => clearTimeout(t)
+  }, [])
 
   React.useEffect(() => {
     let t: ReturnType<typeof setTimeout>
-    if (phase === "sent") t = setTimeout(() => setPhase("reply1"), 500)
-    else if (phase === "reply1") t = setTimeout(() => setPhase("reply2"), 1400)
+    if (phase === "sent") t = setTimeout(() => setPhase("typing"), 400)
+    else if (phase === "typing") t = setTimeout(() => setPhase("reply1"), 800)
+    else if (phase === "reply1") t = setTimeout(() => setPhase("reply2"), 1600)
     else if (phase === "reply2") t = setTimeout(() => setPhase("done"), 1200)
     else return
     return () => clearTimeout(t)
@@ -65,66 +110,58 @@ export function ChatComposer() {
 
   const send = () => {
     if (!canSend) return
-    setSubmitted(draft.trim())
     setDraft("")
     setPhase("sent")
   }
 
+  const reset = () => {
+    setPhase("idle")
+  }
+
+  const switchTab = (v: TabKey) => {
+    setTab(v)
+    setPhase("sent")
+  }
+
   return (
-    <div className="flex h-[288px] w-full max-w-95 flex-col self-start overflow-hidden rounded-[14px] bg-surface shadow-card">
+    <div className="flex h-[312px] w-full max-w-95 flex-col self-start overflow-hidden rounded-card bg-surface shadow-card">
+      {/* header bar */}
       <div className="flex shrink-0 items-center justify-between border-b border-line p-1.5">
-        <div className="flex items-center">
-          {["Flavors", "Suppliers"].map((item) => (
-            <button
-              key={item}
-              type="button"
-              aria-pressed={tab === item}
-              onClick={() => setTab(item)}
-              className={`rounded-[6px] px-2 py-[3px] text-[13px] text-ink transition-[background-color,opacity] duration-100 ${
-                tab === item ? "bg-field" : "opacity-50 hover:opacity-75"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="w-40">
+          <SegmentedControl
+            segments={[
+              { value: "Flavors", label: "Flavors" },
+              { value: "Suppliers", label: "Suppliers" },
+            ]}
+            value={tab}
+            onChangeAction={switchTab}
+          />
         </div>
         <div className="flex items-center gap-1">
-          {[
-            <path key="p" d="M12 5v14M5 12h14" />,
-            <g key="h">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 7v5l3 2" />
-            </g>,
-            <g key="e" fill="currentColor" stroke="none">
-              <circle cx="5" cy="12" r="1.8" />
-              <circle cx="12" cy="12" r="1.8" />
-              <circle cx="19" cy="12" r="1.8" />
-            </g>,
-          ].map((icon, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label="Action"
-              className="flex size-6 items-center justify-center rounded-[6px] text-ink-3 transition-colors duration-100 hover:bg-hover hover:text-ink-2"
+          <button
+            type="button"
+            aria-label="New chat"
+            onClick={reset}
+            className="flex size-6 items-center justify-center rounded-[6px] text-ink-3 transition-colors duration-100 hover:bg-hover hover:text-ink-2"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {icon}
-              </svg>
-            </button>
-          ))}
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
         </div>
       </div>
 
+      {/* message area */}
       <div className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-3 pt-2.5 pb-1">
+        {/* user message */}
         <div className="flex justify-end pl-14">
           <div
             className="rounded-xl bg-field px-3 py-1.5 text-[13px] leading-[1.4] text-ink transition-[opacity,transform] duration-300"
@@ -134,29 +171,83 @@ export function ChatComposer() {
               transitionTimingFunction: "cubic-bezier(0.23, 1, 0.32, 1)",
             }}
           >
-            {submitted}
+            {data.submitted}
           </div>
         </div>
 
+        {/* typing indicator */}
+        {(phase === "typing" || phase === "reply1" || phase === "reply2" || phase === "done") && (
+          <div
+            className="flex items-center gap-2 px-1"
+            style={{
+              animation: "fade-in 300ms ease-out both",
+              opacity: phase === "typing" ? 1 : 0,
+              transition: "opacity 300ms ease-out",
+            }}
+          >
+            {phase === "typing" ? (
+              <>
+                <span className="flex size-5 items-center justify-center rounded-full bg-inset">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--ink-3)"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </span>
+                <Shimmer className="text-[12px]">Researching</Shimmer>
+              </>
+            ) : (
+              <span className="flex size-5 items-center justify-center rounded-full bg-accent-tint">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--accent)">
+                  <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" />
+                </svg>
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* reply sections */}
         {(phase === "reply1" || phase === "reply2" || phase === "done") && (
-          <Section
-            label="Sales History"
-            sub="Flavor Data"
-            time="4s"
-            body="Pulled 3 summers of mint chip sales for comparison."
-          />
+          <Section label={data.repl1.label} sub={data.repl1.sub} time={data.repl1.time} body={data.repl1.body} />
         )}
         {(phase === "reply2" || phase === "done") && (
           <Section
-            label="Comparison"
-            sub="Trend Detection"
-            time="2s"
-            body="Mint chip is up 12% with stronger weekend peaks."
+            label={data.repl2.label}
+            sub={data.repl2.sub}
+            time={data.repl2.time}
+            body={data.repl2.body}
             resolving={phase === "reply2"}
           />
         )}
+
+        {/* done indicator */}
+        {phase === "done" && (
+          <div className="flex items-center gap-1.5 px-1" style={{ animation: "fade-in 300ms ease-out both" }}>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--green)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            <span className="text-[11.5px] text-green font-medium">Complete</span>
+          </div>
+        )}
       </div>
 
+      {/* composer */}
       <div className="mt-auto shrink-0 p-1.5">
         <div
           role="presentation"
@@ -168,9 +259,12 @@ export function ChatComposer() {
             value={draft}
             onChange={(event) => setDraft(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Enter") send()
+              if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault()
+                send()
+              }
             }}
-            placeholder="Prompt or tag a flavor with @"
+            placeholder="Type a message…"
             aria-label="Chat prompt"
             className="min-h-4.5 bg-transparent text-[13px] leading-[1.4] text-ink outline-none placeholder:text-ink-3"
           />
@@ -180,7 +274,7 @@ export function ChatComposer() {
               aria-label="Send"
               disabled={!canSend}
               onClick={send}
-              className="flex size-7 items-center justify-center rounded-[8px] transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.96]"
+              className="flex size-7 items-center justify-center rounded-control transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.96]"
               style={{
                 background: canSend ? "var(--ink)" : "var(--line-strong)",
                 color: canSend ? "var(--surface)" : "var(--ink-2)",

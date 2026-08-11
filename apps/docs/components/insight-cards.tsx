@@ -1,7 +1,7 @@
 "use client"
 
-import { useMemo, useState } from "react"
 import type { PointerEvent } from "react"
+import { useMemo, useState } from "react"
 
 /**
  * INSIGHT CARDS

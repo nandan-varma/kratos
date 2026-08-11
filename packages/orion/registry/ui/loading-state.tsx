@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 
+import { Shimmer } from "@/components/ui/shimmer"
+
 /**
  * Pixel-grid loader for long-running work.
  *
@@ -73,16 +75,7 @@ export function LoadingState({
           />
         ))}
       </span>
-      <span
-        className="bg-clip-text text-[13px] font-medium text-transparent"
-        style={{
-          backgroundImage: "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
-          backgroundSize: "200% 100%",
-          animation: "shimmer-text 1.4s linear infinite",
-        }}
-      >
-        {label}
-      </span>
+      <Shimmer className="text-[13px]">{label}</Shimmer>
       <span className="font-mono text-[12px] text-ink-3 tabular-nums">{elapsed}</span>
     </div>
   )

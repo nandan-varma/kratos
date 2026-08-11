@@ -2,6 +2,8 @@
 
 import { useLayoutEffect, useRef, useState } from "react"
 
+import { Shimmer } from "@/components/ui/shimmer"
+
 import { useStagedSequence } from "@/hooks/use-staged-sequence"
 
 /**
@@ -130,16 +132,7 @@ export function ThinkingState({ variant = "Steps" }: { variant?: string }) {
           <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z" />
         </svg>
         {working ? (
-          <span
-            className="bg-clip-text text-[13px] font-medium whitespace-nowrap text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
-              backgroundSize: "200% 100%",
-              animation: "shimmer-text 1.4s linear infinite",
-            }}
-          >
-            {v.active}
-          </span>
+          <Shimmer className="text-[13px]">{v.active}</Shimmer>
         ) : (
           <span
             className="text-[13px] font-medium whitespace-nowrap text-ink-2"

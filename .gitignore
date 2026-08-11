@@ -24,3 +24,6 @@ apps/docs/.source/
 *.log
 npm-debug.log*
 .vercel
+
+# ai
+.pi/

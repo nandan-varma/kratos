@@ -85,7 +85,7 @@ export function SidebarNav() {
         type="button"
         className="mb-2 flex w-full items-center gap-2.5 rounded-control p-1.5 text-left transition-[background-color,transform] duration-100 hover:bg-hover active:scale-[0.96]"
       >
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-[8px] bg-ink text-[13px] font-semibold text-surface">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-control bg-ink text-[13px] font-semibold text-surface">
           A
         </span>
         <span className="min-w-0 flex-1">

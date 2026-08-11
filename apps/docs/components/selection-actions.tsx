@@ -3,6 +3,8 @@
 import { Check, ChevronRight, MessageCircleQuestion, RefreshCw, Scissors, Smile, Sparkles, Type, X } from "lucide-react"
 import * as React from "react"
 
+import { Shimmer } from "@/components/preview/shimmer"
+
 /**
  * SELECTION ACTIONS
  * A contextual AI bar attached beneath selected text, with a compact
@@ -16,18 +18,7 @@ const REWRITE = "If it fails twice in a row, automatically roll back and page th
 type Mode = "idle" | "thinking" | "streaming" | "result"
 
 function ShimmerLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="bg-clip-text text-[12.5px] font-normal text-transparent"
-      style={{
-        backgroundImage: "linear-gradient(90deg, var(--ink-3) 35%, var(--ink) 50%, var(--ink-3) 65%)",
-        backgroundSize: "200% 100%",
-        animation: "shimmer-text 1.4s linear infinite",
-      }}
-    >
-      {children}
-    </span>
-  )
+  return <Shimmer>{children}</Shimmer>
 }
 
 function StreamedText({ text, onDone }: { text: string; onDone: () => void }) {

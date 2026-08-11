@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { Checkbox } from "@/components/ui/checkbox"
-import { Tag } from "@/components/ui/tag"
+import { Tag, type TagTone } from "@/components/ui/tag"
 
 /**
  * RECORDS TABLE
@@ -21,14 +21,14 @@ const ACTIVITY: Record<Activity, { label: string; color: string; rank: number }>
   none: { label: "No activity", color: "var(--ink-3)", rank: 0 },
 }
 
-const TAG_COLORS: Record<string, string> = {
-  Engineering: "#3f78ff",
-  Design: "#9a5cff",
-  Product: "#25a878",
-  Growth: "#f09a2f",
-  Support: "#ee6572",
-  Remote: "#16a6c7",
-  Contractor: "#92b72d",
+const TAG_TONES: Record<string, TagTone> = {
+  Engineering: "accent",
+  Design: "orange",
+  Product: "green",
+  Growth: "orange",
+  Support: "red",
+  Remote: "accent",
+  Contractor: "orange",
 }
 
 type Row = {
@@ -225,7 +225,7 @@ export function RecordsTable() {
                   <td className="border-b border-line px-3 py-2">
                     <div className="flex flex-wrap gap-1">
                       {row.tags.map((tag) => (
-                        <Tag key={tag} name={tag} color={TAG_COLORS[tag] ?? "#7f858d"} />
+                        <Tag key={tag} name={tag} tone={TAG_TONES[tag] ?? "accent"} />
                       ))}
                     </div>
                   </td>

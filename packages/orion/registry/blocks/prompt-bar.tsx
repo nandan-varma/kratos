@@ -259,7 +259,7 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
                 setDraft((d) => (d.endsWith("@") ? d : `${d}@`))
                 inputRef.current?.focus()
               }}
-              className="flex size-7 shrink-0 items-center justify-center rounded-[8px] text-ink-3 transition-[background-color,color,transform] duration-150 hover:bg-hover hover:text-ink active:scale-[0.94]"
+              className="flex size-7 shrink-0 items-center justify-center rounded-control text-ink-3 transition-[background-color,color,transform] duration-150 hover:bg-hover hover:text-ink active:scale-[0.94]"
             >
               <Icon size={16} strokeWidth={2}>
                 <path d="M12 5v14M5 12h14" />
@@ -306,7 +306,7 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               aria-expanded={modelOpen}
               aria-label="Choose model"
               onClick={() => setModelOpen((current) => !current)}
-              className="flex h-7 shrink-0 items-center gap-1 rounded-[8px] px-1.5 text-[12px] font-medium text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink"
+              className="flex h-7 shrink-0 items-center gap-1 rounded-control px-1.5 text-[12px] font-medium text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink"
             >
               {model.name}
               <span className="text-ink-3">
@@ -321,7 +321,7 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               aria-label={listening ? "Stop dictation" : "Start dictation"}
               aria-pressed={listening}
               onClick={() => setListening((current) => !current)}
-              className={`flex size-7 shrink-0 items-center justify-center rounded-[8px] transition-[background-color,color,transform] duration-150 active:scale-[0.94] ${
+              className={`flex size-7 shrink-0 items-center justify-center rounded-control transition-[background-color,color,transform] duration-150 active:scale-[0.94] ${
                 listening ? "bg-accent-tint text-accent-ink" : "text-ink-3 hover:bg-hover hover:text-ink"
               }`}
             >
@@ -350,7 +350,7 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               aria-label="Send"
               disabled={!canSend}
               onClick={send}
-              className="flex size-7 shrink-0 items-center justify-center rounded-[8px] transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.94]"
+              className="flex size-7 shrink-0 items-center justify-center rounded-control transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.94]"
               style={{
                 background: canSend ? "var(--ink)" : "var(--line-strong)",
                 color: canSend ? "var(--surface)" : "var(--ink-2)",

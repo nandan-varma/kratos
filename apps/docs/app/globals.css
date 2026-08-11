@@ -298,8 +298,9 @@
     padding: 8px 16px;
   }
 
-  .primitive-table-cell {
-    padding: 12px 16px !important;
+  th.primitive-table-cell,
+  td.primitive-table-cell {
+    padding: 12px 16px;
   }
 
   .primitive-icon-button {

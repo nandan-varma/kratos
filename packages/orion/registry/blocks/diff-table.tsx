@@ -1,5 +1,6 @@
 "use client"
 
+import { Badge } from "@/components/ui/badge"
 import { useStagedSequence } from "@/hooks/use-staged-sequence"
 
 /**
@@ -75,13 +76,14 @@ export function DiffTable() {
                     {row.name}
                   </td>
                   <td className="primitive-table-cell">
-                    <span
-                      className="inline-flex h-5.5 items-center gap-1.5 rounded-full bg-inset px-2 text-[11.5px] font-medium shadow-hairline transition-opacity duration-400"
+                    <Badge
+                      variant="chip"
+                      dotColor={STATUS_DOT[row.status]}
+                      className="transition-opacity duration-400"
                       style={{ opacity: out ? 0.55 : 1 }}
                     >
-                      <span className={`size-1.5 rounded-full ${STATUS_DOT[row.status]}`} />
-                      <span className="text-ink-2">{row.status}</span>
-                    </span>
+                      {row.status}
+                    </Badge>
                   </td>
                   <td
                     className="primitive-table-cell text-[12.5px] whitespace-nowrap transition-colors duration-400"
@@ -108,10 +110,9 @@ export function DiffTable() {
                         {ADDED_ROW.name}
                       </span>
                       <span className="primitive-table-cell">
-                        <span className="inline-flex h-5.5 items-center gap-1.5 rounded-full bg-surface px-2 text-[11.5px] font-medium shadow-hairline">
-                          <span className="size-1.5 rounded-full bg-green" />
-                          <span className="text-ink-2">{ADDED_ROW.status}</span>
-                        </span>
+                        <Badge variant="chip" className="bg-surface" dotColor="var(--green)">
+                          {ADDED_ROW.status}
+                        </Badge>
                       </span>
                       <span className="primitive-table-cell text-[12.5px] text-green">{ADDED_ROW.owner}</span>
                     </div>

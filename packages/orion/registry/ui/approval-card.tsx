@@ -267,7 +267,7 @@ export function ApprovalCard() {
               aria-label={last ? "Send answers" : "Next question"}
               disabled={!hasAnswer}
               onClick={() => (last ? setSent(true) : setQi((current) => current + 1))}
-              className="-mr-0.5 flex size-7 items-center justify-center rounded-[8px] transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.96]"
+              className="-mr-0.5 flex size-7 items-center justify-center rounded-control transition-[background-color,color,transform] duration-200 enabled:active:scale-[0.96]"
               style={{
                 background: hasAnswer ? "var(--ink)" : "var(--field)",
                 color: hasAnswer ? "var(--surface)" : "var(--ink-3)",

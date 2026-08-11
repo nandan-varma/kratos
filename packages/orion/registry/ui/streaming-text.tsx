@@ -93,9 +93,13 @@ export function StreamingText() {
   const done = count >= TOKENS.length
 
   React.useEffect(() => {
-    const t = setTimeout(() => setCount((c) => (c >= TOKENS.length ? 0 : c + 1)), done ? HOLD_MS : WORD_MS)
+    if (count >= TOKENS.length) {
+      const t = setTimeout(() => setCount(0), HOLD_MS)
+      return () => clearTimeout(t)
+    }
+    const t = setTimeout(() => setCount((c) => c + 1), WORD_MS)
     return () => clearTimeout(t)
-  }, [done])
+  }, [count])
 
   return (
     <div className="min-h-[15.5rem] w-full max-w-95">

@@ -1,7 +1,15 @@
-export function Tag({ name, color }: { name: string; color: string }) {
+const STYLES = {
+  orange: "bg-orange-tint text-orange",
+  accent: "bg-accent-tint text-accent-ink",
+  green: "bg-green-tint text-green",
+  red: "bg-red-tint text-red",
+} as const
+
+export type TagTone = keyof typeof STYLES
+
+export function Tag({ name, tone }: { name: string; tone: TagTone }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-inset px-1.5 py-0.5 text-[11px] text-ink-2 shadow-hairline">
-      <span className="size-1.5 shrink-0 rounded-full" style={{ background: color }} />
+    <span className={`inline-flex h-5 items-center rounded-[5px] px-1.5 text-[11px] font-medium ${STYLES[tone]}`}>
       {name}
     </span>
   )

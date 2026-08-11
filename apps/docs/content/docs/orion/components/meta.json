@@ -11,6 +11,10 @@
     "thinking",
     "streaming-text",
     "search-list",
-    "code-block"
+    "code-block",
+    "dot",
+    "shimmer",
+    "segmented-control",
+    "badge"
   ]
 }

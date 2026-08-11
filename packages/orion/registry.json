@@ -437,6 +437,58 @@
       ]
     },
     {
+      "name": "@kratos-orion/badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A compact label chip for filters, statuses, and countable tags.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/dot",
+      "type": "registry:ui",
+      "title": "Dot",
+      "description": "A small colored indicator dot for status markers, filters, and embellishments.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/dot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/shimmer",
+      "type": "registry:ui",
+      "title": "Shimmer",
+      "description": "Animated gradient-sweep text for in-progress labels.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "@kratos-orion/segmented-control",
+      "type": "registry:ui",
+      "title": "SegmentedControl",
+      "description": "A pill-style tab switcher with a sliding highlight that tracks the active segment.",
+      "registryDependencies": ["@kratos-orion/orion-theme"],
+      "files": [
+        {
+          "path": "registry/ui/segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "search-list",
       "type": "registry:ui",
       "title": "Search",
