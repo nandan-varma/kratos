@@ -87,7 +87,7 @@ function MiniChart({
       </svg>
       {hover !== null && (
         <div
-          className="pointer-events-none absolute top-0 -translate-x-1/2 rounded-[8px] bg-tooltip-bg px-2 py-1 text-[11px] font-medium text-tooltip-fg shadow-raised"
+          className="pointer-events-none absolute top-0 -translate-x-1/2 rounded-control bg-tooltip-bg px-2 py-1 text-[11px] font-medium text-tooltip-fg shadow-raised"
           style={{ left: `${Math.min(Math.max((hover / (values.length - 1)) * 100, 15), 85)}%` }}
         >
           {formatValue(values[hover])}

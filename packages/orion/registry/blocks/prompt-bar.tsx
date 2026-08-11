@@ -306,7 +306,7 @@ export function PromptBar({ variant = "Rounded" }: { variant?: string }) {
               aria-expanded={modelOpen}
               aria-label="Choose model"
               onClick={() => setModelOpen((current) => !current)}
-              className="flex h-7 shrink-0 items-center gap-1 rounded-control px-1.5 text-[12px] font-medium text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink"
+              className="flex h-7 shrink-0 items-center gap-1 rounded-control px-1.5 text-[12px] font-medium text-ink-2 transition-colors duration-150 hover:bg-hover hover:text-ink active:scale-[0.94]"
             >
               {model.name}
               <span className="text-ink-3">

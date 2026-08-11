@@ -37,7 +37,7 @@ export function ContextCards() {
   return (
     <div className="flex w-full max-w-95 flex-col gap-2">
       <div className="flex items-center gap-2 px-0.5" style={{ animation: "fade-in 400ms ease-out both" }}>
-        <span className="text-[13px] font-semibold text-ink">All chunks</span>
+        <span className="text-[13px] font-medium text-ink">All chunks</span>
         <span className="inline-flex h-5 items-center rounded-md bg-inset px-1.5 text-[11.5px] font-medium text-ink-2 shadow-hairline tabular-nums">
           32
         </span>

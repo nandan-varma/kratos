@@ -85,7 +85,7 @@ export function SidebarNav() {
         type="button"
         className="mb-2 flex w-full items-center gap-2.5 rounded-control p-1.5 text-left transition-[background-color,transform] duration-100 hover:bg-hover active:scale-[0.96]"
       >
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-[8px] bg-ink text-[13px] font-semibold text-surface">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-control bg-ink text-[13px] font-medium text-surface">
           A
         </span>
         <span className="min-w-0 flex-1">
@@ -157,7 +157,7 @@ export function SidebarNav() {
       <div ref={navRef} onMouseLeave={() => setHovered(null)} className="relative flex flex-col gap-2">
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 rounded-[7px] bg-hover"
+          className="pointer-events-none absolute inset-x-0 rounded-control bg-hover/70"
           style={{
             top: box?.top ?? 0,
             height: box?.height ?? 0,

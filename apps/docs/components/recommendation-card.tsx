@@ -85,7 +85,7 @@ export function RecommendationCard() {
   return (
     <div className="w-full max-w-95 overflow-hidden rounded-card bg-surface shadow-card">
       <div className="primitive-card-pad">
-        <span className="text-[13px] font-semibold text-ink">Want me to place this restock order?</span>
+        <span className="text-[13px] font-medium text-ink">Want me to place this restock order?</span>
         <p
           key={active.key}
           className="mt-1.5 min-h-12 text-[13px] leading-relaxed text-ink-2"

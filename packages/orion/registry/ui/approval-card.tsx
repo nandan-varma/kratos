@@ -70,7 +70,7 @@ export function ApprovalCard() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-control bg-surface px-3 py-2 text-[12.5px] font-medium text-ink shadow-btn transition-colors duration-150 hover:bg-hover"
+        className="rounded-control bg-surface px-3 py-2 text-[12.5px] font-medium text-ink shadow-btn transition-colors duration-150 hover:bg-hover active:scale-[0.96]"
       >
         Open approval
       </button>
@@ -145,7 +145,7 @@ export function ApprovalCard() {
                     type="button"
                     aria-pressed={on}
                     onClick={() => toggle(i)}
-                    className="-mx-1.5 flex items-center gap-2 rounded-control px-1.5 py-1 text-left transition-colors duration-100 hover:bg-hover"
+                    className="-mx-1.5 flex items-center gap-2 rounded-control px-1.5 py-1 text-left transition-colors duration-100 hover:bg-hover active:scale-[0.96]"
                   >
                     <span
                       className={`flex size-4 shrink-0 items-center justify-center transition-colors duration-200 ${

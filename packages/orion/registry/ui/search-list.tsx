@@ -98,7 +98,7 @@ export function SearchList() {
                 key={item}
                 type="button"
                 onClick={() => setQuery(item)}
-                className="flex h-7 w-full items-center rounded-control px-2 text-left text-[13px] text-ink transition-colors duration-100 hover:bg-hover"
+                className="flex h-7 w-full items-center rounded-control px-2 text-left text-[13px] text-ink transition-colors duration-100 hover:bg-hover active:scale-[0.96]"
                 style={{ animation: "fade-in 200ms ease-out both" }}
               >
                 {item}

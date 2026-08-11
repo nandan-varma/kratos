@@ -1,7 +1,7 @@
 "use client"
 
 import { Check, ChevronRight, MessageCircleQuestion, RefreshCw, Scissors, Smile, Sparkles, Type, X } from "lucide-react"
-import * as React from "react"
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
 
 import { Shimmer } from "@/components/preview/shimmer"
 
@@ -22,10 +22,10 @@ function ShimmerLabel({ children }: { children: React.ReactNode }) {
 }
 
 function StreamedText({ text, onDone }: { text: string; onDone: () => void }) {
-  const words = React.useMemo(() => text.split(" "), [text])
-  const [count, setCount] = React.useState(0)
+  const words = useMemo(() => text.split(" "), [text])
+  const [count, setCount] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (count >= words.length) {
       onDone()
       return
@@ -45,21 +45,65 @@ const primary =
   "inline-flex h-7 shrink-0 items-center gap-1 rounded-full bg-ink px-2.5 text-[12.5px] font-normal text-canvas shadow-hairline transition-[opacity,transform] duration-150 hover:opacity-90 active:scale-[0.96]"
 
 export function SelectionActions() {
-  const [mode, setMode] = React.useState<Mode>("idle")
-  const [action, setAction] = React.useState("Improve")
-  const [expanded, setExpanded] = React.useState(false)
+  const [mode, setMode] = useState<Mode>("idle")
+  const [action, setAction] = useState("Improve")
+  const [expanded, setExpanded] = useState(false)
+  const [anchor, setAnchor] = useState({ x: 0, y: 0 })
+  const [positioned, setPositioned] = useState(false)
 
-  React.useEffect(() => {
+  const hostRef = useRef<HTMLDivElement>(null)
+  const selectionRef = useRef<HTMLSpanElement>(null)
+  const frameRef = useRef<number | null>(null)
+
+  useEffect(() => {
     if (mode !== "thinking") return
     const t = setTimeout(() => setMode("streaming"), 700)
     return () => clearTimeout(t)
   }, [mode])
+
+  const place = useCallback(() => {
+    if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
+    frameRef.current = requestAnimationFrame(() => {
+      const host = hostRef.current
+      const selection = selectionRef.current
+      if (!(host && selection)) return
+
+      const lines = Array.from(selection.getClientRects())
+      const lastLine = lines.at(-1)
+      if (!lastLine) return
+
+      const hostBounds = host.getBoundingClientRect()
+      setAnchor({
+        x: Math.round(lastLine.left - hostBounds.left + lastLine.width / 2),
+        y: Math.round(lastLine.bottom - hostBounds.top + 8),
+      })
+      setPositioned(true)
+    })
+  }, [])
+
+  useLayoutEffect(() => {
+    place()
+  }, [mode, place])
+
+  useEffect(() => {
+    const host = hostRef.current
+    if (!host) return
+    const observer = new ResizeObserver(place)
+    observer.observe(host)
+    window.addEventListener("resize", place)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("resize", place)
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
+    }
+  }, [place])
 
   const run = (nextAction: string) => {
     setAction(nextAction)
     setExpanded(false)
     setMode("thinking")
   }
+
   const reset = () => {
     setExpanded(false)
     setAction("Improve")
@@ -67,6 +111,7 @@ export function SelectionActions() {
   }
 
   const busy = mode === "thinking" || mode === "streaming"
+  const visible = positioned
   const busyLabel =
     action === "Improve"
       ? "Improving"
@@ -78,10 +123,13 @@ export function SelectionActions() {
 
   return (
     <div className="w-full max-w-[460px]">
-      <div className="relative select-none pb-14">
+      <div ref={hostRef} className="relative select-none pb-8">
         <p className="text-[13px] leading-relaxed text-ink">
           {LEAD}
-          <span className="box-decoration-clone rounded-[3px] bg-[color-mix(in_srgb,var(--accent)_14%,var(--surface))] text-ink dark:bg-accent-tint">
+          <span
+            ref={selectionRef}
+            className="box-decoration-clone rounded-[3px] bg-[color-mix(in_srgb,var(--accent)_14%,var(--surface))] text-ink dark:bg-accent-tint"
+          >
             {mode === "idle" || mode === "thinking" ? (
               PICKED
             ) : mode === "streaming" ? (
@@ -92,8 +140,19 @@ export function SelectionActions() {
           </span>
         </p>
 
-        <div className="absolute left-0 top-full mt-2">
-          <div className="flex h-9 w-fit max-w-[calc(100vw-48px)] items-center justify-center gap-0.5 overflow-hidden rounded-full bg-surface p-1 font-sans text-ink shadow-overlay">
+        <div
+          className="absolute top-0 left-0 z-10"
+          style={{
+            transform: `translate3d(${anchor.x}px, ${anchor.y}px, 0) translateX(-50%)`,
+            transition: "transform 320ms cubic-bezier(0.77,0,0.175,1), opacity 180ms ease-out",
+            opacity: visible ? 1 : 0,
+            pointerEvents: visible ? "auto" : "none",
+          }}
+        >
+          <div
+            className="flex h-9 w-fit max-w-[calc(100vw-48px)] items-center justify-center gap-0.5 overflow-hidden rounded-full bg-surface p-1 font-sans text-ink shadow-overlay"
+            style={visible ? { animation: "pop-in 220ms cubic-bezier(0.23,1,0.32,1) both" } : {}}
+          >
             {busy && (
               <span className="inline-flex h-7 items-center gap-1.5 whitespace-nowrap px-2.5 text-[12.5px] font-normal text-ink-2">
                 <span
