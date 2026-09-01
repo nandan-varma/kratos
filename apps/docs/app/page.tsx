@@ -3,14 +3,7 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { baseOptions } from "@/lib/layout.shared"
 
-const codenames = [
-  {
-    name: "Orion",
-    slug: "orion",
-    namespace: "@kratos-orion",
-    description: "The first design system in kratos — button, hooks, and blocks.",
-  },
-]
+const codenames: { name: string; slug: string; namespace: string; description: string }[] = []
 
 export default function Home() {
   return (

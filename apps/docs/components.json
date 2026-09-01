@@ -17,8 +17,5 @@
     "ui": "@/components/preview",
     "lib": "@/lib",
     "hooks": "@/hooks"
-  },
-  "registries": {
-    "@kratos-orion": "http://localhost:3000/r/orion/{name}.json"
   }
 }
