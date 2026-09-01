@@ -1,0 +1,4 @@
+# All .next/ entries are Next.js build cache artifacts, not source code.
+# They are gitignored and contain no real secrets — false positives from
+# generic API key pattern matching in Next.js runtime state files.
+apps/docs/.next/.*

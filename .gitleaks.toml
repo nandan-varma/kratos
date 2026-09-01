@@ -1,0 +1,4 @@
+title = "kratos gitleaks config"
+
+[allowlist]
+paths = ['''.*\.next/.*''']
