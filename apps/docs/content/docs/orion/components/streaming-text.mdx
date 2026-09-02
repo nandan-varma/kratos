@@ -1,0 +1,28 @@
+---
+title: Streaming Text
+description: Streamed answer with inline sources, actions, and follow-ups.
+---
+
+import { StreamingTextDemo } from "@/components/examples/streaming-text-demo";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/preview/streaming-text.tsx")}>
+  <StreamingTextDemo />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/streaming-text
+```
+
+## Usage
+
+```tsx
+import { StreamingText } from "@/components/ui/streaming-text";
+
+<StreamingText />
+```
+
+Words resolve out of a blur as they stream in, an inline source chip appears mid-sentence, and once the answer settles the action row, source list, and follow-up prompts fade in.

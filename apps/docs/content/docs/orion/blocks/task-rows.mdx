@@ -1,0 +1,22 @@
+---
+title: Task Rows
+description: Live agent task status rows — running, failed, completed.
+---
+
+import { TaskRows } from "@/components/task-rows";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/task-rows.tsx")}>
+  <TaskRows />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/task-rows
+```
+
+## Usage
+
+`variant` accepts `"Capsules"` (default, each row its own rounded card) or `"List"` (rows share one bordered container).

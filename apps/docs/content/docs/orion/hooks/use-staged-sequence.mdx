@@ -1,0 +1,20 @@
+---
+title: useStagedSequence
+description: Advances through a list of stage delays one at a time; returns the current stage index.
+---
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/use-staged-sequence
+```
+
+## Usage
+
+```tsx
+import { useStagedSequence } from "@/hooks/use-staged-sequence";
+
+const stage = useStagedSequence([800, 600, 1800, 2600]);
+```
+
+Drives the sequenced reveals in [Thinking](/docs/orion/components/thinking), [Tool Chips](/docs/orion/blocks/tool-chips), [Task Rows](/docs/orion/blocks/task-rows), and [Diff Table](/docs/orion/blocks/diff-table) — one shared hook instead of four copies of the same timer logic.

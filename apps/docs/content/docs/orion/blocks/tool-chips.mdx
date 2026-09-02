@@ -1,0 +1,18 @@
+---
+title: Tool Chips
+description: Agent tool calls as compact, expandable rows with file-diff chips.
+---
+
+import { ToolChips } from "@/components/tool-chips";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/tool-chips.tsx")}>
+  <ToolChips />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/tool-chips
+```

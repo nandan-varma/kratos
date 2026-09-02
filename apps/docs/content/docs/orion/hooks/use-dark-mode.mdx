@@ -1,0 +1,20 @@
+---
+title: useDarkMode
+description: Tracks whether the .dark class is present on the document root.
+---
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/use-dark-mode
+```
+
+## Usage
+
+```tsx
+import { useDarkMode } from "@/hooks/use-dark-mode";
+
+const dark = useDarkMode();
+```
+
+For consumers — like charts — that can't just read a CSS variable and need the boolean directly, e.g. to pick a theme name for a charting library.

@@ -23,7 +23,7 @@ Not published to npm or the public shadcn directory — distribution is purely `
 // components.json
 {
   "registries": {
-    "@kratos-orion": "https://<your-domain>/r/orion/{name}.json"
+    "@kratos-orion": "https://kratos.nandan.fyi/r/orion/{name}.json"
   }
 }
 ```

@@ -1,0 +1,18 @@
+---
+title: Recommendation Card
+description: Agent suggestion with a confidence meter, alternatives drawer, and accept action.
+---
+
+import { RecommendationCard } from "@/components/recommendation-card";
+import { ComponentPreview } from "@/components/component-preview";
+import { getComponentSource } from "@/lib/get-source";
+
+<ComponentPreview code={getComponentSource("components/recommendation-card.tsx")}>
+  <RecommendationCard />
+</ComponentPreview>
+
+## Installation
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/recommendation-card
+```

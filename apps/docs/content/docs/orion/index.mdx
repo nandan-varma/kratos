@@ -1,0 +1,116 @@
+---
+title: Orion
+description: The first codenamed design system in kratos.
+---
+
+Orion is a self-contained [shadcn](https://ui.shadcn.com) registry — its own components, hooks, and blocks, installable independently in any project. It's a dense, precise, AI-native interface language: small type, tight radii, layered hairline shadows instead of heavy drop shadows, and deliberate motion (shimmer, stagger, settle) instead of instant state changes.
+
+## Installation
+
+Add the registry to your project's `components.json`:
+
+```jsonc
+{
+  "registries": {
+    "@kratos-orion": "https://kratos.nandan.fyi/r/orion/{name}.json"
+  }
+}
+```
+
+Every component depends on `@kratos-orion/orion-theme`, which the CLI pulls in automatically — install any single item and the full token set (colors, fonts, radius, shadows, keyframes) comes with it:
+
+```sh
+pnpm dlx shadcn@latest add @kratos-orion/button
+```
+
+## What's in Orion
+
+- [Components](/docs/orion/components) — atomic, self-contained primitives (`Button`, `Checkbox`, `LoadingState`, ...).
+- [Hooks](/docs/orion/hooks) — shared behavior with no UI of its own (`useStagedSequence`, `useElapsed`, ...).
+- [Blocks](/docs/orion/blocks) — composed sections built from primitives (`ApprovalCard`, `RecordsTable`, ...).
+
+## Design tokens
+
+All tokens live on the `orion-theme` registry item (`packages/orion/registry.json`) and land in your project's `globals.css` as CSS variables under `:root` / `.dark`, re-exposed to Tailwind via `@theme inline`. Reference them as Tailwind utilities (`bg-surface`, `text-ink-2`, `shadow-card`) — never as raw hex values.
+
+### Color
+
+Every color is a semantic name, not a palette index — there's no `gray-500`, there's `ink-2`.
+
+| Token | Role |
+| --- | --- |
+| `page` | Outermost app background |
+| `canvas` | Sunken/secondary background (behind cards) |
+| `surface` | Card and popover background |
+| `inset` | Recessed panel background (code blocks, nested sections) |
+| `hover` / `hover-2` | Hover backgrounds, `hover-2` is the stronger step |
+| `ink` / `ink-2` / `ink-3` | Text: primary / secondary / tertiary (placeholders, timestamps) |
+| `line` / `line-strong` | Borders: hairline / emphasized |
+| `field` | Form control and pill-switcher background |
+| `accent` / `accent-ink` / `accent-tint` | Brand blue: base / darker (link/hover text) / tinted background |
+| `green`, `orange`, `red` (+ `-tint`) | Status colors, each with a translucent tint for chip backgrounds |
+| `tooltip-bg` / `tooltip-fg` / `tooltip-muted` / `tooltip-border` | Tooltip-specific — deliberately not `surface`/`ink`, so tooltips stay legible over any content |
+
+Status color convention: a colored dot (`bg-green`) for compact indicators, a tint pill (`bg-green-tint text-green`) for labeled chips. Never pair a saturated background with saturated text.
+
+### Typography
+
+- **Sans**: Inter (`font-sans`, the default).
+- **Mono**: JetBrains Mono (`font-mono`) — numbers that tick (`tabular-nums`), file paths, code, the numbered `01`/`02` labels on this docs site.
+- **Scale**: components run smaller than typical web type — `text-[11px]` to `text-[13px]` covers almost everything; body copy in blocks is usually `text-[12.5px]` or `text-[13px]` with `leading-relaxed`.
+- Weight does most of the hierarchy work: `font-medium` for emphasis, plain weight for secondary text — avoid jumping to `font-bold`.
+
+### Radius
+
+Two custom scales, deliberately not derived from one base value:
+
+- `rounded-control` (`--radius-control`, 8px) — buttons, inputs, menu rows, small chips.
+- `rounded-card` (`--radius-card`, 14px) — cards, panels, popovers, the docs preview surface itself.
+- `rounded-chip` (6px, fixed) — tool-call chips, diff chips.
+- `rounded-full` — pills, avatars, dots, switcher tracks.
+
+### Shadows
+
+Layered instead of blurred — a 1px hairline plus a very soft drop, so edges stay crisp:
+
+- `shadow-hairline` — a bare 1px ring, no elevation. Default for flat surfaces that need definition (code blocks, inset panels).
+- `shadow-btn` — hairline + a whisper of elevation. Raised buttons, active pill-switcher segments.
+- `shadow-card` — the default card elevation.
+- `shadow-raised` — popovers, dropdown menus, floating toolbars.
+- `shadow-overlay` — the highest layer (command menus, the Selection Actions toolbar).
+- `shadow-inset-field` — inset shadow for recessed form fields.
+
+## Motion
+
+Every animation is a named `@keyframes` rule on the theme item (not a Tailwind arbitrary-value animation), so it's declared once and shared:
+
+| Keyframe | Used for |
+| --- | --- |
+| `shimmer-text` | A gradient sweep across text — "in progress" labels (Loading State, Thinking's active label) |
+| `pixel-on` | Per-cell opacity pulse for the Loading State pixel grid |
+| `stream-in` | Blur-to-clear word reveal (Streaming Text) |
+| `pop-in` | Scale-and-fade entrance for chips, badges, menus |
+| `fade-up` | Translate-and-fade entrance for staggered list rows |
+| `fade-in` | Plain opacity entrance |
+| `spin` | Linear rotation (spinners) |
+| `eq-bounce` | Vertical scale pulse (dictation waveform bars) |
+
+Timing convention: entrances and settles use `cubic-bezier(0.23, 1, 0.32, 1)` (a soft overshoot-free ease-out) almost everywhere — expand/collapse panels, gliding hover highlights, staged reveals. Reach for `useStagedSequence` (see [Hooks](/docs/orion/hooks)) any time a component needs to reveal itself in timed steps rather than all at once.
+
+## Shared layout classes
+
+A few non-Tailwind utility classes ship on the theme item because they're reused across many blocks and are easier to keep in one place than to repeat as long `className` strings:
+
+- `.primitive-card-pad` — standard card content padding.
+- `.primitive-card-bar` / `.primitive-card-footer` — card header/footer padding (shares the same value, named for intent at the call site).
+- `.primitive-icon-button` — a 28×28 `rounded-control` icon button hit-target.
+- `.primitive-table-cell` — table cell padding, used by Diff Table and any future dense table.
+- `.animated-underline` — hover-reveal underline for inline text links (Streaming Text's source list).
+
+## Conventions for new components
+
+- Every new item's `registryDependencies` must include `@kratos-orion/orion-theme` — and every same-registry dependency must be **fully qualified** (`@kratos-orion/foo`, not bare `foo`). The shadcn CLI (as of v4.16.2) resolves bare dependency names against the default `ui.shadcn.com` registry, not the current one — this is a known upstream CLI limitation, not an Orion design choice.
+- Extract a primitive (`registry:ui`) instead of duplicating markup the moment two blocks need the same small piece — that's how `Checkbox`, `Tag`, `Meter`, `SpinnerRing`, and `StatusBadge` came about.
+- Extract a hook the moment two components need the same timing/state logic — `useStagedSequence` replaced four near-identical local `useEffect` timers.
+- New global `@keyframes` go on the `orion-theme` item's `css` field, not inline in a component's `<style>` — keeps every consumer's `globals.css` in sync automatically on install.
+- After any `pnpm dlx shadcn@latest add` that touches `orion-theme`, check `globals.css` for `@keyframes` nested inside `@theme inline { }` — that's the CLI bug above resurfacing; move them to top-level sibling rules.

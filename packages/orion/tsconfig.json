@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/components/ui/*": ["./registry/ui/*"],
+      "@/hooks/*": ["./registry/hooks/*"],
+      "@/lib/*": ["./registry/lib/*"],
+      "@/*": ["./registry/*"]
+    }
+  },
+  "include": ["registry/**/*.ts", "registry/**/*.tsx"]
+}
