@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ArtemisComponentPreview } from "@/components/artemis-component-preview"
 import { CopyCommand } from "@/components/copy-command"
 import { ArtemisDemo } from "@/components/examples/artemis-demo"
 import { RegistryCatalog } from "@/components/registry-catalog"
@@ -69,6 +70,11 @@ function RegistryPage({ registry }: { registry: NonNullable<ReturnType<typeof ge
             href={`/docs/${registry.name}/${item.name}`}
             className="group rounded-xl border border-fd-border bg-fd-card p-5 transition-colors hover:bg-fd-accent"
           >
+            {registry.name === "artemis" && (
+              <div className="mb-5 flex min-h-20 items-center rounded-lg bg-fd-secondary/70 p-4">
+                <ArtemisComponentPreview name={item.name} compact />
+              </div>
+            )}
             <p className="font-medium">{item.title}</p>
             <p className="mt-2 text-sm leading-6 text-fd-muted-foreground">{item.description}</p>
             <p className="mt-4 font-mono text-xs text-fd-muted-foreground">{item.type.replace("registry:", "")}</p>
@@ -97,6 +103,14 @@ function ItemPage({
       <p className="mt-8 font-mono text-xs text-fd-muted-foreground">{item.type}</p>
       <h1 className="mt-2 text-4xl font-semibold tracking-tight">{item.title}</h1>
       <p className="mt-4 max-w-2xl text-fd-muted-foreground">{item.description}</p>
+      {registry.name === "artemis" && (
+        <section className="mt-10 rounded-2xl border border-fd-border bg-fd-card p-6">
+          <p className="mb-5 text-sm font-medium">Rendered example</p>
+          <div className="flex min-h-24 items-center">
+            <ArtemisComponentPreview name={item.name} />
+          </div>
+        </section>
+      )}
       <section className="mt-10">
         <p className="mb-3 text-sm font-medium">Install</p>
         <CopyCommand command={command} />
