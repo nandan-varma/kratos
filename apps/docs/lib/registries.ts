@@ -54,11 +54,3 @@ export function getItemSource(registry: Registry, item: RegistryItem) {
 export function registryItemUrl(registry: Registry, item: RegistryItem) {
   return `/r/${registry.name}/${item.name}.json`
 }
-
-export function hasDependency(item: RegistryItem, dependency: string) {
-  return item.dependencies?.includes(dependency) ?? false
-}
-
-export function supportsDependency(registry: Registry, dependency: string) {
-  return registry.items.some((item) => hasDependency(item, dependency))
-}

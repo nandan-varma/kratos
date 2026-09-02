@@ -19,6 +19,15 @@
   z-index: 1;
 }
 
+.registry-preview-frame {
+  display: grid;
+  min-height: 6rem;
+  width: 100%;
+  place-items: center start;
+  overflow-x: auto;
+  padding: 0.25rem;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

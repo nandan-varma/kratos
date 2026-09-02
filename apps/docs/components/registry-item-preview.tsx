@@ -5,16 +5,8 @@ import { DrawablyComponentPreview } from "@/components/drawably-component-previe
 import { RegistryComponentPreview } from "@/components/generated/registry-previews"
 import type { RegistryItem } from "@/lib/registries"
 
-export function RegistryItemPreview({
-  registry,
-  item,
-  compact = false,
-}: {
-  registry: string
-  item: RegistryItem
-  compact?: boolean
-}) {
-  if (item.dependencies?.includes("drawably")) return <DrawablyComponentPreview name={item.name} compact={compact} />
+export function RegistryItemPreview({ registry, item }: { registry: string; item: RegistryItem }) {
+  if (item.dependencies?.includes("drawably")) return <DrawablyComponentPreview name={item.name} />
   if (item.type === "registry:ui" || item.type === "registry:block")
     return <RegistryComponentPreview key={`${registry}/${item.name}`} registry={registry} item={item.name} />
   if (item.type === "registry:theme") return <ThemePreview />
