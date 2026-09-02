@@ -1,0 +1,127 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "artemis",
+  "homepage": "https://kratos.nandan.fyi/docs/artemis",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Artemis Button",
+      "description": "A real button with Drawably SVG chrome.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Artemis Checkbox",
+      "description": "A hand-drawn checkbox backed by a native input.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/checkbox.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Artemis Radio",
+      "description": "A hand-drawn radio backed by a native input.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/radio.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Artemis Toggle",
+      "description": "A native checkbox switch with a sketched ink-blob knob.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/toggle.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Artemis Input",
+      "description": "A native text input with a hand-drawn outline.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Artemis Textarea",
+      "description": "A resizable native textarea with SVG chrome.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/textarea.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Artemis Select",
+      "description": "A native select with a sketched chevron.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/select.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Artemis Divider",
+      "description": "A rough SVG divider.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/divider.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Artemis Card",
+      "description": "A sketched container for arbitrary content.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Artemis Badge",
+      "description": "A compact hand-drawn inline tag.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "title": "Artemis List",
+      "description": "A semantic list with sketched markers.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/list.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "underline",
+      "type": "registry:ui",
+      "title": "Artemis Underline",
+      "description": "A rough underline for inline text.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/underline.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "highlight",
+      "type": "registry:ui",
+      "title": "Artemis Highlight",
+      "description": "A marker wash behind inline text.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/highlight.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "circle",
+      "type": "registry:ui",
+      "title": "Artemis Circle",
+      "description": "A hand-drawn circle around inline text.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/circle.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "arrow",
+      "type": "registry:ui",
+      "title": "Artemis Arrow",
+      "description": "An SVG annotation arrow between two element refs.",
+      "dependencies": ["drawably"],
+      "files": [{ "path": "registry/arrow.tsx", "type": "registry:ui" }]
+    }
+  ]
+}

@@ -29,6 +29,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      drawably:
+        specifier: 0.3.10
+        version: 0.3.10(react@19.2.8)
       fumadocs-core:
         specifier: ^16.14.3
         version: 16.14.3(@mdx-js/mdx@3.1.1)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@0.469.0(react@19.2.8))(next@16.3.0(@types/node@20.19.43)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(zod@4.4.3)
@@ -75,6 +78,24 @@ importers:
       tailwindcss:
         specifier: ^4
         version: 4.3.3
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
+  packages/artemis:
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.18
+      drawably:
+        specifier: ^0.3.10
+        version: 0.3.10(react@19.2.8)
+      react:
+        specifier: ^19
+        version: 19.2.8
+      shadcn:
+        specifier: ^4.16.2
+        version: 4.20.1(typescript@5.9.3)
       typescript:
         specifier: ^5
         version: 5.9.3
@@ -1674,6 +1695,14 @@ packages:
   dotenv@17.4.2:
     resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
     engines: {node: '>=12'}
+
+  drawably@0.3.10:
+    resolution: {integrity: sha512-BEns/AKYZKlRQHqyX/QUGqJRokHYsAvQuIXDv2njLEf3D4GfczYZoJZKUbEHemEToT7FjJf9EyGWdk6vLkjvXA==}
+    peerDependencies:
+      react: '>=18 <20'
+    peerDependenciesMeta:
+      react:
+        optional: true
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -4711,6 +4740,10 @@ snapshots:
       is-obj: 2.0.0
 
   dotenv@17.4.2: {}
+
+  drawably@0.3.10(react@19.2.8):
+    optionalDependencies:
+      react: 19.2.8
 
   dunder-proto@1.0.1:
     dependencies:

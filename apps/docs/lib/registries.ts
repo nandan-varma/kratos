@@ -12,6 +12,12 @@ export type Registry = {
  */
 export const registries: readonly Registry[] = [
   {
+    name: "Artemis",
+    slug: "artemis",
+    namespace: "@kratos-artemis",
+    description: "Hand-drawn, zero-dependency UI controls powered by Drawably's real HTML elements and SVG sketches.",
+  },
+  {
     name: "Orion",
     slug: "orion",
     namespace: "@kratos-orion",
