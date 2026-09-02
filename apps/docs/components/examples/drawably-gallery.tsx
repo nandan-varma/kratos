@@ -19,7 +19,7 @@ import {
 } from "drawably/react"
 import { useRef } from "react"
 
-export function ArtemisDemo() {
+export function DrawablyGallery() {
   const from = useRef<HTMLSpanElement>(null)
   const to = useRef<HTMLSpanElement>(null)
 
@@ -42,14 +42,14 @@ export function ArtemisDemo() {
         </div>
         <DrawablyDivider stroke="#818cf8" />
         <div className="flex flex-wrap items-center gap-4">
-          <label className="flex items-center gap-2" htmlFor="artemis-ready">
-            <DrawablyCheckbox id="artemis-ready" defaultChecked stroke="#a5b4fc" fill="#a5b4fc" /> Ready
+          <label className="flex items-center gap-2" htmlFor="drawably-ready">
+            <DrawablyCheckbox id="drawably-ready" defaultChecked stroke="#a5b4fc" fill="#a5b4fc" /> Ready
           </label>
-          <label className="flex items-center gap-2" htmlFor="artemis-ink">
-            <DrawablyRadio id="artemis-ink" name="artemis-ink" defaultChecked stroke="#a5b4fc" fill="#a5b4fc" /> Ink
+          <label className="flex items-center gap-2" htmlFor="drawably-ink">
+            <DrawablyRadio id="drawably-ink" name="drawably-ink" defaultChecked stroke="#a5b4fc" fill="#a5b4fc" /> Ink
           </label>
-          <label className="flex items-center gap-2" htmlFor="artemis-share">
-            <DrawablyToggle id="artemis-share" stroke="#a5b4fc" fill="#a5b4fc" /> Share
+          <label className="flex items-center gap-2" htmlFor="drawably-share">
+            <DrawablyToggle id="drawably-share" stroke="#a5b4fc" fill="#a5b4fc" /> Share
           </label>
         </div>
         <DrawablyBadge variant="scribble" stroke="#c4b5fd" fill="#c4b5fd">
@@ -59,14 +59,14 @@ export function ArtemisDemo() {
 
       <DrawablyCard className="space-y-4 p-6" stroke="#fb923c">
         <p className="font-medium">Native fields</p>
-        <DrawablyInput className="artemis-field-surface w-full" stroke="#fb923c" placeholder="Project name" />
+        <DrawablyInput className="drawably-field-surface w-full" stroke="#fb923c" placeholder="Project name" />
         <DrawablyTextarea
-          className="artemis-field-surface w-full"
+          className="drawably-field-surface w-full"
           stroke="#fb923c"
           rows={3}
           placeholder="Leave a note…"
         />
-        <DrawablySelect className="artemis-field-surface" stroke="#fb923c" paper="#fff7ed" defaultValue="Pencil">
+        <DrawablySelect className="drawably-field-surface" stroke="#fb923c" paper="#fff7ed" defaultValue="Pencil">
           <option>Pen</option>
           <option>Pencil</option>
           <option>Brush</option>

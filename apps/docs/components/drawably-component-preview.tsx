@@ -19,7 +19,7 @@ import {
 } from "drawably/react"
 import { useRef } from "react"
 
-type ArtemisComponentPreviewProps = {
+type DrawablyComponentPreviewProps = {
   name: string
   compact?: boolean
 }
@@ -27,11 +27,10 @@ type ArtemisComponentPreviewProps = {
 const controlProps = { stroke: "#818cf8", fill: "#818cf8" }
 
 /**
- * A single runtime renderer for the Artemis registry. Registry item names are
- * passed in from registry.json, so the dashboard never carries a second list
- * of components or descriptions.
+ * A dependency capability renderer. Registry item names are passed in from
+ * registry.json, so the dashboard never carries a second list of components.
  */
-export function ArtemisComponentPreview({ name, compact = false }: ArtemisComponentPreviewProps) {
+export function DrawablyComponentPreview({ name, compact = false }: DrawablyComponentPreviewProps) {
   const from = useRef<HTMLSpanElement>(null)
   const to = useRef<HTMLSpanElement>(null)
   const label = compact ? "Example" : "Preview"
@@ -46,14 +45,14 @@ export function ArtemisComponentPreview({ name, compact = false }: ArtemisCompon
     case "checkbox":
       return <DrawablyCheckbox aria-label="Example checkbox" defaultChecked {...controlProps} />
     case "radio":
-      return <DrawablyRadio aria-label="Example radio" name="artemis-preview-radio" defaultChecked {...controlProps} />
+      return <DrawablyRadio aria-label="Example radio" name="drawably-preview-radio" defaultChecked {...controlProps} />
     case "toggle":
       return <DrawablyToggle aria-label="Example toggle" defaultChecked {...controlProps} />
     case "input":
       return (
         <DrawablyInput
           aria-label="Example input"
-          className="artemis-field-surface w-full"
+          className="drawably-field-surface w-full"
           placeholder="Your name"
           stroke="#818cf8"
         />
@@ -62,7 +61,7 @@ export function ArtemisComponentPreview({ name, compact = false }: ArtemisCompon
       return (
         <DrawablyTextarea
           aria-label="Example textarea"
-          className="artemis-field-surface w-full"
+          className="drawably-field-surface w-full"
           rows={compact ? 2 : 4}
           placeholder="Write a note…"
           stroke="#818cf8"
@@ -72,7 +71,7 @@ export function ArtemisComponentPreview({ name, compact = false }: ArtemisCompon
       return (
         <DrawablySelect
           aria-label="Example select"
-          className="artemis-field-surface"
+          className="drawably-field-surface"
           defaultValue="Pencil"
           paper="#eef2ff"
           stroke="#818cf8"
