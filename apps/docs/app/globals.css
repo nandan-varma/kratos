@@ -4,6 +4,21 @@
 @import "fumadocs-ui/css/preset.css";
 @import "drawably/style.css";
 
+.artemis-field-surface {
+  background: #fff;
+  border-radius: 8px;
+  color: #18181b;
+}
+
+.artemis-field-surface .drawably-svg {
+  z-index: 0;
+}
+
+.artemis-field-surface :is(input, textarea, select) {
+  position: relative;
+  z-index: 1;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
