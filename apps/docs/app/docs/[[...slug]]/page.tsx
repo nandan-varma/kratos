@@ -78,7 +78,7 @@ function RegistryPage({ registry }: { registry: NonNullable<ReturnType<typeof ge
             className="group rounded-xl border border-fd-border bg-fd-card p-5 transition-colors hover:bg-fd-accent"
           >
             <div className="mb-5 flex min-h-20 items-center rounded-lg bg-fd-secondary/70 p-4">
-              <RegistryItemPreview item={item} compact />
+              <RegistryItemPreview registry={registry.name} item={item} compact />
             </div>
             <p className="font-medium">{item.title}</p>
             <p className="mt-2 text-sm leading-6 text-fd-muted-foreground">{item.description}</p>
@@ -111,7 +111,7 @@ function ItemPage({
       <section className="mt-10 rounded-2xl border border-fd-border bg-fd-card p-6">
         <p className="mb-5 text-sm font-medium">Rendered example</p>
         <div className="flex min-h-24 items-center">
-          <RegistryItemPreview item={item} />
+          <RegistryItemPreview registry={registry.name} item={item} />
         </div>
       </section>
       <section className="mt-10">

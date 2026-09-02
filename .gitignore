@@ -13,6 +13,8 @@ apps/docs/public/r/
 
 # fumadocs generated
 apps/docs/.source/
+apps/docs/.registry-preview-sources/
+apps/docs/components/generated/
 
 # env
 .env

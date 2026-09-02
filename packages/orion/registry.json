@@ -301,6 +301,9 @@
       "description": "Displays a button or a component that looks like a button.",
       "registryDependencies": ["utils"],
       "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "preview": {
+        "children": "Publish"
+      },
       "files": [
         {
           "path": "registry/ui/button.tsx",
@@ -415,6 +418,13 @@
       "title": "Checkbox",
       "description": "A square checkbox control with checked, unchecked, and mixed states.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": { "label": "Enable notifications" },
+        "state": { "checked": true },
+        "handlers": {
+          "onChangeAction": { "action": "toggle", "key": "checked" }
+        }
+      },
       "files": [
         {
           "path": "registry/ui/checkbox.tsx",
@@ -428,6 +438,9 @@
       "title": "Tag",
       "description": "A colored-dot label chip for categorizing table rows.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": { "name": "In review", "tone": "accent" }
+      },
       "files": [
         {
           "path": "registry/ui/tag.tsx",
@@ -441,6 +454,9 @@
       "title": "Meter",
       "description": "A three-bar confidence/signal meter.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": { "signal": 2, "tone": "var(--green)" }
+      },
       "files": [
         {
           "path": "registry/ui/meter.tsx",
@@ -467,6 +483,10 @@
       "title": "StatusBadge",
       "description": "A colored circular badge for success/failure states.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": { "tone": "green" },
+        "children": "✓"
+      },
       "files": [
         {
           "path": "registry/ui/status-badge.tsx",
@@ -480,6 +500,10 @@
       "title": "Badge",
       "description": "A compact label chip for filters, statuses, and countable tags.",
       "registryDependencies": ["orion-theme", "dot"],
+      "preview": {
+        "props": { "variant": "status", "tone": "green" },
+        "children": "Ready"
+      },
       "files": [
         {
           "path": "registry/ui/badge.tsx",
@@ -506,6 +530,10 @@
       "title": "Shimmer",
       "description": "Animated gradient-sweep text for in-progress labels.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": { "variant": "accent" },
+        "children": "Generating preview…"
+      },
       "files": [
         {
           "path": "registry/ui/shimmer.tsx",
@@ -519,6 +547,18 @@
       "title": "SegmentedControl",
       "description": "A pill-style tab switcher with a sliding highlight that tracks the active segment.",
       "registryDependencies": ["orion-theme"],
+      "preview": {
+        "props": {
+          "segments": [
+            { "value": "overview", "label": "Overview" },
+            { "value": "activity", "label": "Activity" }
+          ]
+        },
+        "state": { "value": "overview" },
+        "handlers": {
+          "onChangeAction": { "action": "set", "key": "value" }
+        }
+      },
       "files": [
         {
           "path": "registry/ui/segmented-control.tsx",

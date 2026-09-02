@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "generate:previews": "node ../../scripts/generate-registry-previews.mjs",
+    "dev": "pnpm generate:previews && next dev",
+    "build": "pnpm generate:previews && next build",
     "start": "next start",
     "lint": "biome check"
   },
