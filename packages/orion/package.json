@@ -12,8 +12,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
-    "react": "^19.3.0",
-    "shadcn": "^4.21.4",
+    "react": "^19.3.1",
+    "shadcn": "^4.23.0",
     "tailwind-merge": "^3.7.0",
     "typescript": "^5.9.3"
   }
