@@ -4,7 +4,6 @@
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
       "@/components/ui/*": ["./registry/ui/*"],
       "@/hooks/*": ["./registry/hooks/*"],

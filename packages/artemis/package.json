@@ -8,9 +8,9 @@
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
-    "drawably": "^0.3.10",
+    "drawably": "^0.4.2",
     "react": "^19.3.1",
     "shadcn": "^4.23.0",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }
