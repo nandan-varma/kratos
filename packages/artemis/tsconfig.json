@@ -4,7 +4,9 @@
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "baseUrl": "."
+    "paths": {
+      "*": ["./*"]
+    }
   },
   "include": ["registry/**/*.ts", "registry/**/*.tsx"]
 }
